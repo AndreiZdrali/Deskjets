@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Deskjets.Resources">
+    <BitmapImage x:Key="settingsImage" UriSource="pack://application:,,,/Deskjets;component/Resources/settings.png"/>
+    <BitmapImage x:Key="addImage" UriSource="pack://application:,,,/Deskjets;component/Resources/add_circle.png"/>
+</ResourceDictionary>
