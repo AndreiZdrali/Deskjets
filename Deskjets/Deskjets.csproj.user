@@ -10,15 +10,33 @@
     <Compile Update="Controls\BubbleButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\SettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\TopBarAddWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\BubbleButton.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Resources\ColorDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Resources\ImageDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="TopBar.xaml">
+    <Page Update="Resources\StringDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\TopBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\TopBarAddWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

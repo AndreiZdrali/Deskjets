@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Deskjets.Animations;
+using Deskjets.Windows;
 
 namespace Deskjets.Controls
 {

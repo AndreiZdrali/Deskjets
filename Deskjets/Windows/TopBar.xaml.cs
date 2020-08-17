@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Deskjets.Controls;
 using Deskjets.Animations;
 
-namespace Deskjets
+namespace Deskjets.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -29,7 +29,7 @@ namespace Deskjets
             InitializeComponent();
 
             #region TEST
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 30; i++)
             {
                 bubbleStackPanel.Children.Add(new BubbleButton() { Margin = new Thickness(5, 0, 5, 0)});
             }
@@ -66,6 +66,7 @@ namespace Deskjets
             if (e.Delta < 0)
             {
                 scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + 50);
+                //ScrollAnimations.ScrollForward(sender, 50);
             }
             else
             {

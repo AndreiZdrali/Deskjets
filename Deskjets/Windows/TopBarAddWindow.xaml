@@ -1,0 +1,55 @@
+﻿<Window x:Class="Deskjets.Windows.TopBarAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Deskjets.Windows"
+        mc:Ignorable="d"
+        Title="TopBarAddWindow" Height="300" Width="550"
+        WindowStyle="None" AllowsTransparency="True"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--TITLE BAR-->
+        <Grid x:Name="titleBar" Background="{StaticResource AppPurple}"
+            MouseDown="titleBar_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Left"
+                    Orientation="Horizontal">
+                <Image Source="{StaticResource AppIcon}"
+                    Margin="5,0,0,0" Height="15"/>
+                <TextBlock Text="{StaticResource AppTitle}"
+                           HorizontalAlignment="Center" Margin="5,0,0,0"
+                           FontSize="16" FontWeight="Light"/>
+            </StackPanel>
+            <TextBlock Grid.Column="1" Margin="5,0,0,0"
+                       Text="{StaticResource TopBarAddWindowTitle}"
+                       HorizontalAlignment="Center"
+                       FontSize="20" FontWeight="Light"/>
+            <StackPanel Grid.Column="2" HorizontalAlignment="Right"
+                    FlowDirection="RightToLeft"
+                    Orientation="Horizontal">
+                <Border x:Name="closeButton" Width="20" Height="20"
+                    Margin="5,0,0,0" CornerRadius="10"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right" Background="{StaticResource AppRedNoFocus}">
+                </Border>
+                <Border x:Name="minimizeButton" Width="20" Height="20"
+                    Margin="5,0,0,0" CornerRadius="10"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right" Background="{StaticResource AppGreenNoFocus}">
+                </Border>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="{StaticResource AppCyan}">
+            
+        </Grid>
+    </Grid>
+</Window>

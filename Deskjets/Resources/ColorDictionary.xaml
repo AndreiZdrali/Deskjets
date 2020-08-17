@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Deskjets.Resources">
+    <SolidColorBrush x:Key="AppPurple" Color="MediumPurple"/>
+    <SolidColorBrush x:Key="AppCyan" Color="LightCyan"/>
+    <SolidColorBrush x:Key="AppRedFocus" Color="Red"/>
+    <SolidColorBrush x:Key="AppRedNoFocus" Color="IndianRed"/>
+    <SolidColorBrush x:Key="AppGreenFocus" Color="Green"/>
+    <SolidColorBrush x:Key="AppGreenNoFocus" Color="MediumSeaGreen"/>
+</ResourceDictionary>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 D:\C#\Deskjets\Deskjets\App.xaml
-355484622
+7-1885574432
 
-11-1445321695
+13-1557102066
 1921654412462
-Controls\BubbleButton.xaml;Resources\ImageDictionary.xaml;TopBar.xaml;
+Controls\BubbleButton.xaml;Resources\ColorDictionary.xaml;Resources\ImageDictionary.xaml;Resources\StringDictionary.xaml;Windows\SettingsWindow.xaml;Windows\TopBar.xaml;Windows\TopBarAddWindow.xaml;
 
-True
+False
 

@@ -4,7 +4,6 @@ D:\C#\Deskjets\Teste\bin\Debug\netcoreapp3.1\Teste.runtimeconfig.json
 D:\C#\Deskjets\Teste\bin\Debug\netcoreapp3.1\Teste.runtimeconfig.dev.json
 D:\C#\Deskjets\Teste\bin\Debug\netcoreapp3.1\Teste.dll
 D:\C#\Deskjets\Teste\bin\Debug\netcoreapp3.1\Teste.pdb
-D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\Teste.csprojAssemblyReference.cache
 D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\App.g.cs
 D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\Teste_MarkupCompile.cache
@@ -17,3 +16,4 @@ D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\Teste.csproj.CoreCompileInputs.cach
 D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\Teste.dll
 D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\Teste.pdb
 D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\Teste.genruntimeconfig.cache
+D:\C#\Deskjets\Teste\obj\Debug\netcoreapp3.1\Teste.csprojAssemblyReference.cache

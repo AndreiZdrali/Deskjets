@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Threading;
 using System.Threading.Tasks;
+using Deskjets.Windows;
 
 namespace Deskjets.Animations
 {
