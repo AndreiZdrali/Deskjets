@@ -27,3 +27,6 @@ D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\TopBarAddWindow.g.cs
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\TopBarAddWindow.baml
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Resources\ColorDictionary.baml
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Resources\StringDictionary.baml
+D:\C#\Deskjets\Deskjets\bin\Debug\netcoreapp3.1\MaterialDesignColors.dll
+D:\C#\Deskjets\Deskjets\bin\Debug\netcoreapp3.1\MaterialDesignThemes.Wpf.dll
+D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Deskjets.csproj.CopyComplete

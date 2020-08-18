@@ -27,7 +27,7 @@ namespace Deskjets.Windows
             this.closeButton.MouseEnter += (s, e) => this.closeButton.Background = Brushes.Red;
             this.closeButton.MouseLeave += (s, e) => this.closeButton.Background = Brushes.IndianRed;
             this.closeButton.MouseUp += (s, e) => this.Close();
-            
+
             this.minimizeButton.MouseEnter += (s, e) => this.minimizeButton.Background = Brushes.ForestGreen;
             this.minimizeButton.MouseLeave += (s, e) => this.minimizeButton.Background = Brushes.MediumSeaGreen;
             this.minimizeButton.MouseUp += (s, e) => this.WindowState = WindowState.Minimized;
@@ -35,7 +35,7 @@ namespace Deskjets.Windows
 
         private void titleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //pt ca daca apas pe un buton misca fereastra in loc sa activele MouseUp
+            //pt ca daca apas pe un buton misca fereastra in loc sa activeze MouseUp
             if (e.LeftButton == MouseButtonState.Pressed && !this.minimizeButton.IsMouseOver && !this.closeButton.IsMouseOver)
                 this.DragMove();
         }

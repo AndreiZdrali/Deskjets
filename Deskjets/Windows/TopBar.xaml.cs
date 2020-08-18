@@ -50,6 +50,7 @@ namespace Deskjets.Windows
                 this.settingsButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#33ADD8E6");
             };
             this.settingsButton.MouseLeave += (s, e) => this.settingsButton.Background = Brushes.Transparent;
+            this.settingsButton.MouseUp += (s, e) => new SettingsWindow().Show(); //test
 
             this.addButton.MouseEnter += (s, e) =>
             {
@@ -57,6 +58,7 @@ namespace Deskjets.Windows
                 this.addButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#33ADD8E6");
             };
             this.addButton.MouseLeave += (s, e) => this.addButton.Background = Brushes.Transparent;
+            this.addButton.MouseUp += (s, e) => new TopBarAddWindow().Show(); //test
         }
 
         //de facut animatie smechera

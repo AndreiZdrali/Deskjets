@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "VRngP25sMZVw5WcsbxJMgxkg7v8dJ61+uUWkmNY5BflXd+p4GqK6A4n5WzPoXhjYoI6mYW6KP0y1Ois6oaBy9w==",
+  "dgSpecHash": "qKgFONYg7xx62WnRaoeYkfO2ABGusRlyzQO3f/yZxkY9GkGd6oWfn5Ks0UCpvBYAnQkTT9dT+uTtphdOAyF8zg==",
   "success": true,
   "projectFilePath": "D:\\C#\\Deskjets\\Deskjets\\Deskjets.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Andrei\\.nuget\\packages\\materialdesigncolors\\1.2.6\\materialdesigncolors.1.2.6.nupkg.sha512",
+    "C:\\Users\\Andrei\\.nuget\\packages\\materialdesignthemes\\3.1.3\\materialdesignthemes.3.1.3.nupkg.sha512"
+  ],
   "logs": []
 }

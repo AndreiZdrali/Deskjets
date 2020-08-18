@@ -85,7 +85,7 @@ namespace Deskjets.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Deskjets;component/windows/topbar.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Deskjets;V1.0.0.0;component/windows/topbar.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\TopBar.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
