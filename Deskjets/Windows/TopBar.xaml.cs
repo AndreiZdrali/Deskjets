@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Deskjets.Controls;
 using Deskjets.Animations;
+using Deskjets.Settings;
+using System.Xml.Serialization;
+using Deskjets.Classes;
 
 namespace Deskjets.Windows
 {
@@ -50,7 +53,7 @@ namespace Deskjets.Windows
                 this.settingsButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#33ADD8E6");
             };
             this.settingsButton.MouseLeave += (s, e) => this.settingsButton.Background = Brushes.Transparent;
-            this.settingsButton.MouseUp += (s, e) => new SettingsWindow().Show(); //test
+            this.settingsButton.MouseUp += settingsButton_MouseUp;
 
             this.addButton.MouseEnter += (s, e) =>
             {
@@ -58,7 +61,7 @@ namespace Deskjets.Windows
                 this.addButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#33ADD8E6");
             };
             this.addButton.MouseLeave += (s, e) => this.addButton.Background = Brushes.Transparent;
-            this.addButton.MouseUp += (s, e) => new TopBarAddWindow().Show(); //test
+            this.addButton.MouseUp += addButton_MouseUp;
         }
 
         //de facut animatie smechera
@@ -76,5 +79,31 @@ namespace Deskjets.Windows
             }
             e.Handled = true;
         }
+
+        #region BUTOANELE DIN DREAPTA
+        private void settingsButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (Helpers.IsWindowOpen<SettingsWindow>())
+            {
+                Application.Current.Windows.OfType<SettingsWindow>().ToArray()[0].Focus();
+            }
+            else
+            {
+                new SettingsWindow().Show();
+            }
+        }
+        
+        private void addButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (Helpers.IsWindowOpen<TopBarAddWindow>())
+            {
+                Application.Current.Windows.OfType<TopBarAddWindow>().ToArray()[0].Focus();
+            }
+            else
+            {
+                new TopBarAddWindow().Show();
+            }
+        }
+        #endregion
     }
 }

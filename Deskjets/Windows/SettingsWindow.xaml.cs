@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Deskjets.Classes;
+using Deskjets.Settings;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;

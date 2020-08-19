@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Deskjets.Settings
 {
-    class Settings
+    class GeneralSettings
     {
-        public TopBarSettings topBarSettings = new TopBarSettings();
+        public TopBarSettings topBarSettings { get; set; } = new TopBarSettings();
     }
 }

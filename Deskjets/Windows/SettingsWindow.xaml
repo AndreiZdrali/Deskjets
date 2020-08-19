@@ -4,12 +4,107 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Deskjets.Windows"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="TopBarAddWindow" Height="300" Width="550"
+        Title="TopBarAddWindow" Height="300" Width="300"
         WindowStyle="None" AllowsTransparency="True"
         BorderThickness="1" BorderBrush="Black"
-        Loaded="Window_Loaded">
+        Background="{StaticResource AppCyan}" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <sys:Double x:Key="BigFontSize">25</sys:Double>
+            <sys:Double x:Key="SmallFontSize">18</sys:Double>
+            <sys:Double x:Key="TextBlockWidth">200</sys:Double>
+
+            <SolidColorBrush x:Key="ButtonBrush" Color="#6000F5FF"/>
+            <SolidColorBrush x:Key="ButtonSelectBrush" Color="#7000FFFF"/>
+            <SolidColorBrush x:Key="ButtonDragBrush" Color="#9000FFFF"/>
+            
+            <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid x:Name="Grid">
+                                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" 
+                                           Height="Auto" Fill="Transparent"/>
+                                <Border x:Name="Rectangle1" CornerRadius="3 3 3 3" HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch" Width="Auto" Height="Auto" 
+                                        Background="{TemplateBinding Background}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Tag" Value="Horizontal">
+                                    <Setter TargetName="Rectangle1" Property="Width" Value="Auto"/>
+                                    <Setter TargetName="Rectangle1" Property="Height" Value="6"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--SCROLLBARS-->
+            <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Foreground" Value="{DynamicResource ButtonBrush}"/>
+                <!--SA SCHIMB INTR-UN BINDING!!!!!!-->
+                <Setter Property="Background" Value="DarkGray"/>
+                <Setter Property="Width" Value="10"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ScrollBar}">
+                            <Grid x:Name="GridRoot" Width="6" Background="{x:Null}">
+                                <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="False">
+                                    <Track.Thumb>
+                                        <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" 
+                                               Style="{DynamicResource ScrollThumbs}"/>
+                                    </Track.Thumb>
+                                    <Track.IncreaseRepeatButton>
+                                        <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="False"/>
+                                    </Track.IncreaseRepeatButton>
+                                    <Track.DecreaseRepeatButton>
+                                        <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="False"/>
+                                    </Track.DecreaseRepeatButton>
+                                </Track>
+                            </Grid>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                    <Setter Value="{DynamicResource ButtonSelectBrush}" 
+                                            TargetName="Thumb" Property="Background"/>
+                                </Trigger>
+                                <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                    <Setter Value="{DynamicResource ButtonDragBrush}"
+                                            TargetName="Thumb" Property="Background"/>
+                                </Trigger>
+
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                                <Trigger Property="Orientation" Value="Horizontal">
+                                    <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Width" Value="Auto"/>
+                                    <Setter Property="Height" Value="12"/>
+                                    <Setter TargetName="Thumb" Property="Tag" Value="Horizontal"/>
+                                    <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand"/>
+                                    <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -24,31 +119,86 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel HorizontalAlignment="Left"
-                    Orientation="Horizontal">
+                        Orientation="Horizontal">
                 <Image Source="{StaticResource AppIcon}"
-                    Margin="5,0,0,0" Height="15"/>
+                        Margin="5,0,0,0" Height="15"/>
                 <TextBlock Text="{StaticResource AppTitle}"
                            HorizontalAlignment="Center" Margin="5,0,0,0"
                            FontSize="16" FontWeight="Light"/>
             </StackPanel>
-            <TextBlock Grid.Column="1" Margin="5,0,0,0"
+            <TextBlock Grid.Column="1"
                        Text="{StaticResource SettingsWindowTitle}"
                        HorizontalAlignment="Center"
-                       FontSize="20" FontWeight="Light"/>
+                       FontSize="16" FontWeight="Light"/>
             <StackPanel Grid.Column="2" HorizontalAlignment="Right"
-                    FlowDirection="RightToLeft"
-                    Orientation="Horizontal">
+                        FlowDirection="RightToLeft"
+                        Orientation="Horizontal">
                 <Border x:Name="closeButton" Width="20" Height="20"
-                    Margin="5,0,0,0" CornerRadius="10"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right" Background="{StaticResource AppRedNoFocus}">
+                        Margin="5,0,0,0" CornerRadius="10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right" Background="{StaticResource AppRedNoFocus}">
                 </Border>
                 <Border x:Name="minimizeButton" Width="20" Height="20"
-                    Margin="5,0,0,0" CornerRadius="10"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right" Background="{StaticResource AppGreenNoFocus}">
+                        Margin="5,0,0,0" CornerRadius="10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right" Background="{StaticResource AppGreenNoFocus}">
                 </Border>
             </StackPanel>
         </Grid>
+        <!--SETARI-->
+        <ScrollViewer Grid.Row="1" Margin="5,0,0,0"
+                      VerticalScrollBarVisibility="Visible">
+            <StackPanel Orientation="Vertical" x:Name="d">
+                <!--SETARI APLICATIE-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="General Settings"
+                               VerticalAlignment="Center"
+                               FontSize="{StaticResource BigFontSize}"
+                               HorizontalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <TextBlock Grid.Row="1" Text="Open on startup"
+                                   VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
+                                   FontSize="{StaticResource SmallFontSize}"
+                                   FontWeight="Light"/>
+                        <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
+                                      x:Name="openOnStartup"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <TextBlock Grid.Row="2" Text="Run in background"
+                                   VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
+                                   FontSize="{StaticResource SmallFontSize}"
+                                   FontWeight="Light"/>
+                        <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
+                                      x:Name="deletemepls"/>
+                    </StackPanel>
+                </Grid>
+                <!--SETARI TOP BAR-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Top Bar Settings"
+                               VerticalAlignment="Center" FontSize="{StaticResource BigFontSize}"
+                               HorizontalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <TextBlock Grid.Row="2" Text="Enabled"
+                                   VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
+                                   FontSize="{StaticResource SmallFontSize}"
+                                   FontWeight="Light"/>
+                        <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
+                                      x:Name="deletemepls2"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

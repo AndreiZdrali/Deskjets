@@ -69,7 +69,7 @@ namespace Deskjets.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Deskjets;V1.0.0.0;component/controls/bubblebutton.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Deskjets;component/controls/bubblebutton.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\BubbleButton.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
