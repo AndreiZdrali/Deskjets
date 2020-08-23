@@ -162,19 +162,17 @@
                                HorizontalAlignment="Center"/>
                     <StackPanel Grid.Row="1" Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <TextBlock Grid.Row="1" Text="Open on startup"
+                        <TextBlock Text="Open on startup" FontWeight="Light"
                                    VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
-                                   FontSize="{StaticResource SmallFontSize}"
-                                   FontWeight="Light"/>
+                                   FontSize="{StaticResource SmallFontSize}"/>
                         <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
                                       x:Name="openOnStartup"/>
                     </StackPanel>
                     <StackPanel Grid.Row="2" Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <TextBlock Grid.Row="2" Text="Run in background"
+                        <TextBlock Text="Run in background" FontWeight="Light"
                                    VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
-                                   FontSize="{StaticResource SmallFontSize}"
-                                   FontWeight="Light"/>
+                                   FontSize="{StaticResource SmallFontSize}"/>
                         <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
                                       x:Name="deletemepls"/>
                     </StackPanel>
@@ -184,18 +182,27 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="Top Bar Settings"
                                VerticalAlignment="Center" FontSize="{StaticResource BigFontSize}"
                                HorizontalAlignment="Center"/>
                     <StackPanel Grid.Row="1" Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <TextBlock Grid.Row="2" Text="Enabled"
+                        <TextBlock Text="Enabled" FontWeight="Light"
                                    VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
-                                   FontSize="{StaticResource SmallFontSize}"
-                                   FontWeight="Light"/>
+                                   FontSize="{StaticResource SmallFontSize}"/>
                         <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
-                                      x:Name="deletemepls2"/>
+                                      IsChecked="{Binding Path=Enabled}"
+                                      x:Name="topBarEnableToggle"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="Background Color" FontWeight="Light"
+                                   VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
+                                   FontSize="{StaticResource SmallFontSize}"/>
+                        <TextBox x:Name="topBarColor" Width="70"
+                                 Text="{Binding Path=Background, Mode=TwoWay}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

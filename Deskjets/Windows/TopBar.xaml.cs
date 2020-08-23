@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using Deskjets.Controls;
 using Deskjets.Animations;
 using Deskjets.Settings;
-using System.Xml.Serialization;
 using Deskjets.Classes;
 
 namespace Deskjets.Windows
@@ -30,6 +29,8 @@ namespace Deskjets.Windows
         public TopBar()
         {
             InitializeComponent();
+
+            this.DataContext = Global.generalSettings.topBarSettings;
 
             #region TEST
             for (int i = 0; i < 30; i++)
@@ -83,26 +84,12 @@ namespace Deskjets.Windows
         #region BUTOANELE DIN DREAPTA
         private void settingsButton_MouseUp(object sender, MouseEventArgs e)
         {
-            if (Helpers.IsWindowOpen<SettingsWindow>())
-            {
-                Application.Current.Windows.OfType<SettingsWindow>().ToArray()[0].Focus();
-            }
-            else
-            {
-                new SettingsWindow().Show();
-            }
+            Utils.OpenWindow<SettingsWindow>(true);
         }
         
         private void addButton_MouseUp(object sender, MouseEventArgs e)
         {
-            if (Helpers.IsWindowOpen<TopBarAddWindow>())
-            {
-                Application.Current.Windows.OfType<TopBarAddWindow>().ToArray()[0].Focus();
-            }
-            else
-            {
-                new TopBarAddWindow().Show();
-            }
+            Utils.OpenWindow<TopBarAddWindow>(true);
         }
         #endregion
     }

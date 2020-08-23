@@ -22,6 +22,8 @@ namespace Deskjets.Windows
         public SettingsWindow()
         {
             InitializeComponent();
+
+            this.DataContext = Global.generalSettings.topBarSettings;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

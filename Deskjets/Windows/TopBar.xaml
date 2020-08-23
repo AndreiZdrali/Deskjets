@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="80" Width="600"
         WindowStyle="None" AllowsTransparency="True"
-        Background="Transparent" Loaded="Window_Loaded">
+        Background="Transparent" ShowInTaskbar="False"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <SolidColorBrush x:Key="ButtonBrush" Color="#6000F5FF"/>
@@ -99,7 +100,9 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
-    <Border CornerRadius="0,0,30,30" Background="#60ADD8E6">
+    <!--Background="{Binding Path=Background, Mode=TwoWay}"-->
+    <Border CornerRadius="0,0,30,30"
+            Background="#60ADD8E6">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30"/>

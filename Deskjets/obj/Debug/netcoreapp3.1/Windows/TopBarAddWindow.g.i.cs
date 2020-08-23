@@ -22,6 +22,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms.Integration;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Markup;
@@ -80,7 +81,7 @@ namespace Deskjets.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Deskjets;V1.0.0.0;component/windows/topbaraddwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Deskjets;component/windows/topbaraddwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\TopBarAddWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
