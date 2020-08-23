@@ -19,7 +19,7 @@ namespace Deskjets
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //nu stiu dc, dar daca nu tin asta aici imi dispare iconita din system tray
+            //nu stiu dc, dar daca nu tin asta aici imi dispare din system tray
             Global.notifyIcon.DoubleClick += (s, e) => { Utils.OpenWindow<SettingsWindow>(true); };
 
             TopBar topBar = new TopBar();
@@ -34,7 +34,7 @@ namespace Deskjets
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-
+            Global.notifyIcon.Dispose();
         }
     }
 }

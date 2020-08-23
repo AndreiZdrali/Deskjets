@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Deskjets.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Deskjets.Settings
 {
-    class GeneralSettings
+    class GeneralSettings : ViewModelBase
     {
-        public TopBarSettings topBarSettings { get; set; } = new TopBarSettings();
+        public TopBarSettings TopBarSettings { get; set; } = new TopBarSettings();
+
+        public bool OpenOnStartup { get; set; } = true;
     }
 }

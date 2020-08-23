@@ -166,7 +166,8 @@
                                    VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
                                    FontSize="{StaticResource SmallFontSize}"/>
                         <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
-                                      x:Name="openOnStartup"/>
+                                      IsChecked="{Binding Path=OpenOnStartup, Mode=TwoWay}"
+                                      x:Name="openOnStartupToggle"/>
                     </StackPanel>
                     <StackPanel Grid.Row="2" Orientation="Horizontal"
                                 VerticalAlignment="Center">
@@ -183,6 +184,7 @@
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="Top Bar Settings"
                                VerticalAlignment="Center" FontSize="{StaticResource BigFontSize}"
@@ -193,16 +195,16 @@
                                    VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
                                    FontSize="{StaticResource SmallFontSize}"/>
                         <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
-                                      IsChecked="{Binding Path=Enabled}"
-                                      x:Name="topBarEnableToggle"/>
+                                      IsChecked="{Binding Path=TopBarSettings.Enabled, Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Grid.Row="2" Orientation="Horizontal"
                                 VerticalAlignment="Center">
                         <TextBlock Text="Background Color" FontWeight="Light"
                                    VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
                                    FontSize="{StaticResource SmallFontSize}"/>
-                        <TextBox x:Name="topBarColor" Width="70"
-                                 Text="{Binding Path=Background, Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource MaterialDesignTextBox}"
+                                 Text="{Binding Path=TopBarSettings.Background, Mode=TwoWay}"
+                                 Width="70"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

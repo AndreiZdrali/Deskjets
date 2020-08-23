@@ -11,7 +11,7 @@ namespace Deskjets.Classes
 {
     static class Global
     {
-        public static GeneralSettings generalSettings = new GeneralSettings();
+        public static GeneralSettings GeneralSettings = new GeneralSettings();
 
         public static System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon() { Visible = true };
         

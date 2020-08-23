@@ -23,7 +23,7 @@ namespace Deskjets.Windows
         {
             InitializeComponent();
 
-            this.DataContext = Global.generalSettings.topBarSettings;
+            this.DataContext = Global.GeneralSettings;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -42,6 +42,11 @@ namespace Deskjets.Windows
             //pt ca daca apas pe un buton misca fereastra in loc sa activeze MouseUp
             if (e.LeftButton == MouseButtonState.Pressed && !this.minimizeButton.IsMouseOver && !this.closeButton.IsMouseOver)
                 this.DragMove();
+        }
+
+        private void openOnStartupToggle_Click(object sender, RoutedEventArgs e)
+        {
+            //sa faca/stearga registru
         }
     }
 }

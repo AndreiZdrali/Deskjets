@@ -30,7 +30,7 @@ namespace Deskjets.Windows
         {
             InitializeComponent();
 
-            this.DataContext = Global.generalSettings.topBarSettings;
+            this.DataContext = Global.GeneralSettings.TopBarSettings;
 
             #region TEST
             for (int i = 0; i < 30; i++)
@@ -71,8 +71,8 @@ namespace Deskjets.Windows
             ScrollViewer scrollViewer = (ScrollViewer)sender;
             if (e.Delta < 0)
             {
-                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + 50);
-                //ScrollAnimations.ScrollForward(sender, 50);
+                //scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + 50);
+                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + scrollViewer.Width);
             }
             else
             {
