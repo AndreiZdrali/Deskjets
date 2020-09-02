@@ -16,6 +16,7 @@ using Deskjets.Controls;
 using Deskjets.Animations;
 using Deskjets.Settings;
 using Deskjets.Classes;
+using System.Runtime.CompilerServices;
 
 namespace Deskjets.Windows
 {
@@ -31,14 +32,8 @@ namespace Deskjets.Windows
             InitializeComponent();
 
             this.DataContext = Global.GeneralSettings.TopBarSettings;
-
-            #region TEST
-            for (int i = 0; i < 30; i++)
-            {
-                bubbleStackPanel.Children.Add(new BubbleButton() { Margin = new Thickness(5, 0, 5, 0)});
-            }
-            #endregion
         }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -51,7 +46,7 @@ namespace Deskjets.Windows
             this.settingsButton.MouseEnter += (s, e) =>
             {
                 if (!TopBar.IsExtended) return;
-                this.settingsButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#33ADD8E6");
+                this.settingsButton.Background = Utils.StringToBrush("#33ADD8E6");
             };
             this.settingsButton.MouseLeave += (s, e) => this.settingsButton.Background = Brushes.Transparent;
             this.settingsButton.MouseUp += settingsButton_MouseUp;
@@ -59,10 +54,28 @@ namespace Deskjets.Windows
             this.addButton.MouseEnter += (s, e) =>
             {
                 if (!TopBar.IsExtended) return;
-                this.addButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#33ADD8E6");
+                this.addButton.Background = Utils.StringToBrush("#33ADD8E6");
             };
             this.addButton.MouseLeave += (s, e) => this.addButton.Background = Brushes.Transparent;
             this.addButton.MouseUp += addButton_MouseUp;
+            Global.UnserializableSettings.BubbleButtonPropertiesList.Add(new BubbleButtonProperties()
+            {
+                Color = "#FFFFFF",
+                HighlightColor = "#000000",
+                ExecutablePath = String.Empty
+            });
+
+            foreach(BubbleButtonProperties buttonProperties in Global.UnserializableSettings.BubbleButtonPropertiesList)
+            {
+                this.bubbleStackPanel.Children.Add(new BubbleButton()
+                {
+                    Margin = new Thickness(5, 0, 5, 0),
+                    Color = Utils.StringToBrush(buttonProperties.Color),
+                    HighlightColor = Utils.StringToBrush(buttonProperties.HighlightColor),
+                    ExecutablePath = buttonProperties.ExecutablePath
+                });
+            }
+
         }
 
         //de facut animatie smechera
@@ -71,8 +84,7 @@ namespace Deskjets.Windows
             ScrollViewer scrollViewer = (ScrollViewer)sender;
             if (e.Delta < 0)
             {
-                //scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + 50);
-                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + scrollViewer.Width);
+                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + 50);
             }
             else
             {

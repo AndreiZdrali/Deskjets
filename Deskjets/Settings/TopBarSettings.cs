@@ -7,6 +7,7 @@ using Deskjets.Classes;
 
 namespace Deskjets.Settings
 {
+    [Serializable]
     class TopBarSettings : ViewModelBase
     {
         private bool _enabled = true;
@@ -16,14 +17,16 @@ namespace Deskjets.Settings
             set { SetProperty(ref _enabled, value); }
         }
 
-        private Brush _background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#60ADD8E6"));
+        [field:NonSerialized]
+        private Brush _background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#1AE0FFFF"));
         public Brush Background
         {
             get { return _background; }
             set { SetProperty(ref _background, value); }
         }
 
-        private List<BubbleButton> _bubbleButtons;
+        [field:NonSerialized]
+        private List<BubbleButton> _bubbleButtons = new List<BubbleButton>();
         public List<BubbleButton> BubbleButtons
         {
             get { return _bubbleButtons; }

@@ -18,6 +18,7 @@ namespace Deskjets.Controls
     /// <summary>
     /// Interaction logic for BubbleButton.xaml
     /// </summary>
+    /// sa fac o clasa care tine informatiile astea pt ca nu pot sa serializez direct controlul
     public partial class BubbleButton : UserControl
     {
         private Duration animationDuration = new Duration(new TimeSpan(0, 0, 0, 0, 100));

@@ -6,8 +6,10 @@ using System.Runtime.CompilerServices;
 
 namespace Deskjets.Classes
 {
+    [Serializable]
     abstract class ViewModelBase : INotifyPropertyChanged
     {
+        [field:NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)

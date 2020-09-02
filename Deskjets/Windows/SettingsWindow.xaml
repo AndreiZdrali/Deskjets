@@ -148,7 +148,7 @@
         <!--SETARI-->
         <ScrollViewer Grid.Row="1" Margin="5,0,0,0"
                       VerticalScrollBarVisibility="Visible">
-            <StackPanel Orientation="Vertical" x:Name="d">
+            <StackPanel Orientation="Vertical">
                 <!--SETARI APLICATIE-->
                 <Grid>
                     <Grid.RowDefinitions>
@@ -195,7 +195,8 @@
                                    VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
                                    FontSize="{StaticResource SmallFontSize}"/>
                         <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
-                                      IsChecked="{Binding Path=TopBarSettings.Enabled, Mode=TwoWay}"/>
+                                      IsChecked="{Binding Path=TopBarSettings.Enabled, Mode=TwoWay}"
+                                      x:Name="topBarEnabledToggle"/>
                     </StackPanel>
                     <StackPanel Grid.Row="2" Orientation="Horizontal"
                                 VerticalAlignment="Center">

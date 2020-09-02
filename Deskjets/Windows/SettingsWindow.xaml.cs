@@ -2,6 +2,7 @@
 using Deskjets.Settings;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,6 +36,9 @@ namespace Deskjets.Windows
             this.minimizeButton.MouseEnter += (s, e) => this.minimizeButton.Background = Brushes.ForestGreen;
             this.minimizeButton.MouseLeave += (s, e) => this.minimizeButton.Background = Brushes.MediumSeaGreen;
             this.minimizeButton.MouseUp += (s, e) => this.WindowState = WindowState.Minimized;
+
+            this.topBarEnabledToggle.Checked += topBarEnabledToggle_Checked;
+            this.topBarEnabledToggle.Unchecked += topBarEnabledToggle_Unchecked;
         }
 
         private void titleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -47,6 +51,18 @@ namespace Deskjets.Windows
         private void openOnStartupToggle_Click(object sender, RoutedEventArgs e)
         {
             //sa faca/stearga registru
+        }
+
+        private void topBarEnabledToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            if (!Utils.IsWindowOpen<TopBar>())
+                Utils.OpenWindow<TopBar>(true);
+        }
+
+        private void topBarEnabledToggle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (Utils.IsWindowOpen<TopBar>())
+                Application.Current.Windows.OfType<TopBar>().ToArray()[0].Close();
         }
     }
 }

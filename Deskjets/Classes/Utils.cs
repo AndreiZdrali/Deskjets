@@ -41,5 +41,10 @@ namespace Deskjets.Classes
                 return new Bitmap(bitmap);
             }
         }
+
+        public static System.Windows.Media.Brush StringToBrush(string colorString)
+        {
+            return (System.Windows.Media.SolidColorBrush)new System.Windows.Media.BrushConverter().ConvertFrom(colorString);
+        }
     }
 }

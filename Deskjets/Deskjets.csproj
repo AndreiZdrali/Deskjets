@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
+    <Win32Resource></Win32Resource>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,10 @@
     <Resource Include="Resources\add_circle.png" />
     <Resource Include="Resources\app_icon.png" />
     <Resource Include="Resources\settings.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>
