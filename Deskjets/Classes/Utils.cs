@@ -6,6 +6,8 @@ using System.Linq;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
 
 namespace Deskjets.Classes
 {
@@ -25,6 +27,14 @@ namespace Deskjets.Classes
                 Application.Current.Windows.OfType<T>().ToArray()[0].Focus();
             else
                 Activator.CreateInstance<T>().Show();
+        }
+
+        [DllImport("gdi32.dll")]
+        public static extern bool DeleteObject(IntPtr hObject);
+        public static BitmapSource BitmapToBitmapSource(Bitmap bitmap)
+        {
+            return Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(),
+                IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
 
         public static Bitmap BitmapImageToBitmap(BitmapImage bitmapImage)

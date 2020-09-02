@@ -10,6 +10,6 @@
     <!--sa fac bninding pentru culoare-->
     <Border x:Name="bubbleBorder" Height="50" Width="50"
                 CornerRadius="25" Background="{Binding Path=Color}">
-        <Image x:Name="nume"/>
+        <Image x:Name="buttonIcon" Height="32" Width="32"/>
     </Border>
 </UserControl>

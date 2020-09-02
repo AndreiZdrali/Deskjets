@@ -10,7 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 using Deskjets.Animations;
+using Deskjets.Classes;
 using Deskjets.Windows;
 
 namespace Deskjets.Controls
@@ -40,6 +42,10 @@ namespace Deskjets.Controls
         {
             this.MouseEnter += BubbleButton_MouseEnter;
             this.MouseLeave += BubbleButton_MouseLeave;
+            this.MouseLeftButtonUp += BubbleButton_MouseLeftButtonUp;
+            this.MouseRightButtonDown += BubbleButton_MouseRightButtonDown;
+
+            this.buttonIcon.Source = Utils.BitmapToBitmapSource(System.Drawing.Icon.ExtractAssociatedIcon(this.ExecutablePath).ToBitmap());
 
             #region calculeaza pasii pt animatii
             double extendCornerRadius = bubbleBorder.Width / 2 * (3.0 / 5);
@@ -53,6 +59,7 @@ namespace Deskjets.Controls
                 shrinkSteps.Add(extendCornerRadius - shrinkDifference / 5 * i);
             #endregion
         }
+
 
         private void BubbleButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -69,6 +76,20 @@ namespace Deskjets.Controls
 
             bubbleBorder.Background = this.Color;
             BubbleButtonAnimations.BubbleButton_ChangeCornerRadiusWithSteps(sender, shrinkSteps, animationDuration);
+        }
+
+        private void BubbleButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = this.ExecutablePath,
+                UseShellExecute = true
+            });
+        }
+
+        private void BubbleButton_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //context menu
         }
     }
 }

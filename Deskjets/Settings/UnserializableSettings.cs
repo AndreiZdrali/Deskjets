@@ -7,6 +7,8 @@ using Deskjets.Settings;
 
 namespace Deskjets.Settings
 {
+    //setarile care nu merg serializate le bag aici si cand deschid aplicatia le bag
+    [Serializable]
     class UnserializableSettings
     {
         public List<BubbleButtonProperties> BubbleButtonPropertiesList = new List<BubbleButtonProperties>();

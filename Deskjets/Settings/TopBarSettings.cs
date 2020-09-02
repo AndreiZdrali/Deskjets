@@ -25,6 +25,7 @@ namespace Deskjets.Settings
             set { SetProperty(ref _background, value); }
         }
 
+        //cam inutil ca oricum nu pun itemsource, ci le actualizaz din UnserializableSettings
         [field:NonSerialized]
         private List<BubbleButton> _bubbleButtons = new List<BubbleButton>();
         public List<BubbleButton> BubbleButtons

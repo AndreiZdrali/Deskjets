@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows;
+using Deskjets.Settings;
 
 namespace Deskjets.Classes
 {
@@ -47,5 +48,17 @@ namespace Deskjets.Classes
             }
             return obj;
         }
+
+        #region MAI SPECIFICE
+        public static void SerializeGeneralSettings()
+        {
+            SerializeObject<GeneralSettings>(Global.SettingsFile, Global.GeneralSettings);
+        }
+        
+        public static void SerializeUnserializableSettings()
+        {
+            SerializeObject<UnserializableSettings>(Global.UnserializableSettingsFile, Global.UnserializableSettings);
+        }
+        #endregion
     }
 }

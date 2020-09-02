@@ -17,6 +17,7 @@ using Deskjets.Animations;
 using Deskjets.Settings;
 using Deskjets.Classes;
 using System.Runtime.CompilerServices;
+using Microsoft.Win32;
 
 namespace Deskjets.Windows
 {
@@ -58,12 +59,6 @@ namespace Deskjets.Windows
             };
             this.addButton.MouseLeave += (s, e) => this.addButton.Background = Brushes.Transparent;
             this.addButton.MouseUp += addButton_MouseUp;
-            Global.UnserializableSettings.BubbleButtonPropertiesList.Add(new BubbleButtonProperties()
-            {
-                Color = "#FFFFFF",
-                HighlightColor = "#000000",
-                ExecutablePath = String.Empty
-            });
 
             foreach(BubbleButtonProperties buttonProperties in Global.UnserializableSettings.BubbleButtonPropertiesList)
             {
@@ -101,7 +96,34 @@ namespace Deskjets.Windows
         
         private void addButton_MouseUp(object sender, MouseEventArgs e)
         {
-            Utils.OpenWindow<TopBarAddWindow>(true);
+            //Utils.OpenWindow<TopBarAddWindow>(true);
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                InitialDirectory = @"D:\",
+                RestoreDirectory = true
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                //salveaza proprietatile unserializable si creeaza butonul
+                BubbleButtonProperties buttonProperties = new BubbleButtonProperties()
+                {
+                    Color = "#FFFFFF",
+                    HighlightColor = "#000000",
+                    ExecutablePath = openFileDialog.FileName
+                };
+
+                this.bubbleStackPanel.Children.Add(new BubbleButton()
+                {
+                    Margin = new Thickness(5, 0, 5, 0),
+                    Color = Utils.StringToBrush(buttonProperties.Color),
+                    HighlightColor = Utils.StringToBrush(buttonProperties.HighlightColor),
+                    ExecutablePath = buttonProperties.ExecutablePath
+                });
+
+                Global.UnserializableSettings.BubbleButtonPropertiesList.Add(buttonProperties);
+                SaveLoad.SerializeUnserializableSettings();
+            }
         }
         #endregion
     }

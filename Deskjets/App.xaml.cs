@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Media.Imaging;
 using Deskjets.Classes;
 using Deskjets.Settings;
@@ -39,7 +40,6 @@ namespace Deskjets
             //mai intai verifica daca exista fisier de setari, daca nu creeaza
             if (File.Exists(Global.UnserializableSettingsFile) && new FileInfo(Global.UnserializableSettingsFile).Length != 0)
                 Global.UnserializableSettings = SaveLoad.DeserializeObject<UnserializableSettings>(Global.UnserializableSettingsFile);
-                
             else
             {
                 if (!Directory.Exists(Global.SettingsFolder))
@@ -49,28 +49,30 @@ namespace Deskjets
                     File.Create(Global.UnserializableSettingsFile).Close();
             }
 
+            Global.GeneralSettings.TopBarSettings.Background = Utils.StringToBrush(Global.UnserializableSettings.TopBarBackground);
+
             foreach (BubbleButtonProperties buttonProperties in Global.UnserializableSettings.BubbleButtonPropertiesList)
             {
-                
+                continue;
             }
             #endregion
 
             #region DESCHIDE FERESTRELE ACTIVATE
             if (Global.GeneralSettings.TopBarSettings.Enabled)
                 new TopBar().Show();
-
-            TopBarAddWindow topBarAddWindow = new TopBarAddWindow();
-            topBarAddWindow.Show();
-
-            SettingsWindow settingsWindow = new SettingsWindow();
-            settingsWindow.Show();
             #endregion
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             Global.notifyIcon.Dispose();
-            SaveLoad.SerializeObject<GeneralSettings>(Global.SettingsFile, Global.GeneralSettings);
+            SaveLoad.SerializeGeneralSettings();
+            SaveLoad.SerializeUnserializableSettings();
+        }
+
+        private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            //xd
         }
     }
 }

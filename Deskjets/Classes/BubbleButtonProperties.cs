@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Deskjets.Classes
 {
+    [Serializable]
     class BubbleButtonProperties
     {
         public string Color;

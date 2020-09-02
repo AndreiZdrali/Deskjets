@@ -205,7 +205,7 @@
                                    FontSize="{StaticResource SmallFontSize}"/>
                         <TextBox Style="{StaticResource MaterialDesignTextBox}"
                                  Text="{Binding Path=TopBarSettings.Background, Mode=TwoWay}"
-                                 Width="70"/>
+                                 Width="70" x:Name="bgColorBox"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

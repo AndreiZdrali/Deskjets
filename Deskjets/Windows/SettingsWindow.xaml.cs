@@ -39,6 +39,8 @@ namespace Deskjets.Windows
 
             this.topBarEnabledToggle.Checked += topBarEnabledToggle_Checked;
             this.topBarEnabledToggle.Unchecked += topBarEnabledToggle_Unchecked;
+
+            this.bgColorBox.TextChanged += bgColorBox_TextChanged;
         }
 
         private void titleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -63,6 +65,21 @@ namespace Deskjets.Windows
         {
             if (Utils.IsWindowOpen<TopBar>())
                 Application.Current.Windows.OfType<TopBar>().ToArray()[0].Close();
+        }
+
+        private void bgColorBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //daca nu da eroare atunci este culoare hex valida
+            try
+            {
+                Utils.StringToBrush(bgColorBox.Text);
+                Global.UnserializableSettings.TopBarBackground = bgColorBox.Text;
+                SaveLoad.SerializeObject<UnserializableSettings>(Global.UnserializableSettingsFile, Global.UnserializableSettings);
+            }
+            catch
+            {
+
+            }
         }
     }
 }
