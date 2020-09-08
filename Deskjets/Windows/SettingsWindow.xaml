@@ -154,7 +154,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="General Settings"
                                VerticalAlignment="Center"
@@ -168,14 +167,6 @@
                         <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
                                       IsChecked="{Binding Path=OpenOnStartup, Mode=TwoWay}"
                                       x:Name="openOnStartupToggle"/>
-                    </StackPanel>
-                    <StackPanel Grid.Row="2" Orientation="Horizontal"
-                                VerticalAlignment="Center">
-                        <TextBlock Text="Run in background" FontWeight="Light"
-                                   VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
-                                   FontSize="{StaticResource SmallFontSize}"/>
-                        <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
-                                      x:Name="deletemepls"/>
                     </StackPanel>
                 </Grid>
                 <!--SETARI TOP BAR-->

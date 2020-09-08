@@ -8,8 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="80" Width="600"
         WindowStyle="None" AllowsTransparency="True"
-        Background="Transparent" ShowInTaskbar="False"
-        Loaded="Window_Loaded">
+        Background="Transparent" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <SolidColorBrush x:Key="ButtonBrush" Color="#6000F5FF"/>

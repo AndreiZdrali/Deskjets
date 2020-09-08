@@ -12,6 +12,7 @@ namespace Deskjets.Classes
 {
     static class Global
     {
+        public static string StartupFolder = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
         public static string SettingsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
             @"My Apps\Deskjets");
         public static string SettingsFile = Path.Combine(SettingsFolder, "Serializable.dat");

@@ -50,11 +50,6 @@ namespace Deskjets
             }
 
             Global.GeneralSettings.TopBarSettings.Background = Utils.StringToBrush(Global.UnserializableSettings.TopBarBackground);
-
-            foreach (BubbleButtonProperties buttonProperties in Global.UnserializableSettings.BubbleButtonPropertiesList)
-            {
-                continue;
-            }
             #endregion
 
             #region DESCHIDE FERESTRELE ACTIVATE

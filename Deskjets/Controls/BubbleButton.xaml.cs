@@ -14,6 +14,8 @@ using System.Diagnostics;
 using Deskjets.Animations;
 using Deskjets.Classes;
 using Deskjets.Windows;
+using MaterialDesignThemes.Wpf;
+using System.Linq;
 
 namespace Deskjets.Controls
 {
@@ -89,7 +91,18 @@ namespace Deskjets.Controls
 
         private void BubbleButton_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //context menu
+            //sa fac in add button window o lista cu toate butoanele
+            try
+            {
+                Global.UnserializableSettings.BubbleButtonPropertiesList.Remove(
+                    Global.UnserializableSettings.BubbleButtonPropertiesList.Single(x => x.ExecutablePath == this.ExecutablePath));
+                ((StackPanel)this.Parent).Children.Remove(this);
+                SaveLoad.SerializeUnserializableSettings();
+            }
+            catch
+            {
+                
+            }
         }
     }
 }
