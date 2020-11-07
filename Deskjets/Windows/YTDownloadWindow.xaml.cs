@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,6 +49,12 @@ namespace Deskjets.Windows
 
         private async void downloadButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Directory.Exists(Global.GeneralSettings.YTDownloadSettings.Path))
+            {
+                MessageBox.Show("Invalid path. Change it in the app settings.");
+                return;
+            }
+
             downloadButton.IsEnabled = false;
             try
             {

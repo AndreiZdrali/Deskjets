@@ -15,8 +15,8 @@
         <ResourceDictionary>
             <sys:Double x:Key="BigFontSize">25</sys:Double>
             <sys:Double x:Key="SmallFontSize">18</sys:Double>
-            <sys:Double x:Key="TextBlockWidth">190</sys:Double>
-            <sys:Double x:Key="TextBoxWidth">80</sys:Double>
+            <sys:Double x:Key="TextBlockWidth">170</sys:Double>
+            <sys:Double x:Key="TextBoxWidth">100</sys:Double>
 
             <SolidColorBrush x:Key="ButtonBrush" Color="#6000F5FF"/>
             <SolidColorBrush x:Key="ButtonSelectBrush" Color="#7000FFFF"/>
@@ -177,7 +177,7 @@
                                    FontSize="{StaticResource SmallFontSize}"/>
                         <TextBox Style="{StaticResource MaterialDesignTextBox}"
                                  Text="{Binding Path=YTDownloadSettings.Path, Mode=TwoWay}"
-                                 Width="{StaticResource TextBoxWidth}"/>
+                                 Width="{StaticResource TextBoxWidth}" x:Name="ytPathBox"/>
                     </StackPanel>
                 </Grid>
                 <!--SETARI TOP BAR-->

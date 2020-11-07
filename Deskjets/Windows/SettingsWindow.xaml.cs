@@ -41,6 +41,8 @@ namespace Deskjets.Windows
 
             this.openOnStartupToggle.Click += openOnStartupToggle_Click;
 
+            this.ytPathBox.TextChanged += ytPathBox_TextChanged;
+
             this.topBarEnabledToggle.Checked += topBarEnabledToggle_Checked;
             this.topBarEnabledToggle.Unchecked += topBarEnabledToggle_Unchecked;
 
@@ -67,6 +69,12 @@ namespace Deskjets.Windows
             {
                 Utils.CreateShortcut(Global.ExecutablePath, shortcutPath, AppDomain.CurrentDomain.BaseDirectory);
             }
+        }
+
+        private void ytPathBox_TextChanged(object sender, RoutedEventArgs e) //POT SA FOLOSESC SI LOSTFOCUS
+        {
+            if (Directory.Exists(ytPathBox.Text))
+                SaveLoad.SerializeGeneralSettings();
         }
 
         private void topBarEnabledToggle_Checked(object sender, RoutedEventArgs e)

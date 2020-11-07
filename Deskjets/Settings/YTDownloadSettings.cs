@@ -8,7 +8,7 @@ namespace Deskjets.Settings
     [Serializable]
     class YTDownloadSettings : ViewModelBase
     {
-        private string _path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        private string _path = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         public string Path
         {
             get { return _path; }

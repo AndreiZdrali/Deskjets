@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using Deskjets.Classes;
 using Deskjets.Settings;
 using Deskjets.Windows;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Deskjets
 {
