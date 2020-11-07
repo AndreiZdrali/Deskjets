@@ -64,9 +64,9 @@ namespace Deskjets
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            Global.notifyIcon.Dispose();
             SaveLoad.SerializeGeneralSettings();
             SaveLoad.SerializeUnserializableSettings();
+            Global.notifyIcon.Dispose();
         }
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

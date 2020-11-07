@@ -46,9 +46,27 @@ namespace Deskjets.Windows
                 this.DragMove();
         }
 
-        private void downloadButton_Click(object sender, RoutedEventArgs e)
+        private async void downloadButton_Click(object sender, RoutedEventArgs e)
         {
-            //download
+            downloadButton.IsEnabled = false;
+            downloadButton.Opacity = 0.5;
+            try
+            {
+                if (mp3RadioButton.IsChecked == true)
+                {
+                    YouTube.DownloadAudioAsync(videoUrlBox.Text, Global.GeneralSettings.YTDownloadSettings.Path);
+                }
+                else if (mp4RadioButton.IsChecked == true)
+                {
+                    YouTube.DownloadVideoAsync(videoUrlBox.Text, Global.GeneralSettings.YTDownloadSettings.Path);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message); //SA SCHIMB IN FEREATRA DE ERORI CUSTOM
+            }
+            downloadButton.IsEnabled = true;
+            downloadButton.Opacity = 1;
         }
     }
 }

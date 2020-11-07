@@ -81,15 +81,17 @@
                         HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal" Margin="0,0,5,0"
                             VerticalAlignment="Center">
+                    <!--AS PUTEA SA BAG TEXTBLOCK IN CONTENT-->
                     <RadioButton Style="{StaticResource MaterialDesignRadioButton}"
-                                 GroupName="fileFormat" IsChecked="True"/>
+                                 GroupName="fileFormat" IsChecked="True"
+                                 x:Name="mp3RadioButton"/>
                     <TextBlock Text="MP3" VerticalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="5,0,0,0"
                             VerticalAlignment="Center">
-                    <!--AS PUTEA SA BAG TEXTBLOCK IN CONTENT-->
                     <RadioButton Style="{StaticResource MaterialDesignRadioButton}"
-                                 GroupName="fileFormat"/>
+                                 GroupName="fileFormat"
+                                 x:Name="mp4RadioButton"/>
                     <TextBlock Text="MP4" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>

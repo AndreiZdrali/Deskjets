@@ -35,3 +35,5 @@ D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Interop.IWshRuntimeLibrary.dll
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Deskjets.csproj.ResolveComReference.cache
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\YTDownloadWindow.g.cs
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\YTDownloadWindow.baml
+D:\C#\Deskjets\Deskjets\bin\Debug\netcoreapp3.1\AngleSharp.dll
+D:\C#\Deskjets\Deskjets\bin\Debug\netcoreapp3.1\YoutubeExplode.dll

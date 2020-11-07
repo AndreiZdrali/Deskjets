@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using Deskjets.Classes;
 using Deskjets.Settings;
+using AngleSharp.Common;
+using System.Diagnostics;
 
 namespace Deskjets.Windows
 {
@@ -43,6 +45,8 @@ namespace Deskjets.Windows
             this.topBarEnabledToggle.Unchecked += topBarEnabledToggle_Unchecked;
 
             this.bgColorBox.TextChanged += bgColorBox_TextChanged;
+
+            this.resetButton.Click += resetButton_Click;
         }
 
         private void titleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -69,12 +73,14 @@ namespace Deskjets.Windows
         {
             if (!Utils.IsWindowOpen<TopBar>())
                 Utils.OpenWindow<TopBar>(true);
+            SaveLoad.SerializeGeneralSettings();
         }
 
         private void topBarEnabledToggle_Unchecked(object sender, RoutedEventArgs e)
         {
             if (Utils.IsWindowOpen<TopBar>())
                 Application.Current.Windows.OfType<TopBar>().ToArray()[0].Close();
+            SaveLoad.SerializeGeneralSettings();
         }
 
         private void bgColorBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -84,11 +90,23 @@ namespace Deskjets.Windows
             {
                 Utils.StringToBrush(bgColorBox.Text);
                 Global.UnserializableSettings.TopBarBackground = bgColorBox.Text;
-                SaveLoad.SerializeObject<UnserializableSettings>(Global.UnserializableSettingsFile, Global.UnserializableSettings);
+                SaveLoad.SerializeUnserializableSettings();
             }
             catch
             {
 
+            }
+        }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e) //SA SCHIMB IN DIALOG BOX CUSTOM
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure? This will delete the settings files of" +
+                "the application. May solve issues if using old settings files.", "Delete settings files", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                File.Delete(Global.SettingsFile);
+                File.Delete(Global.UnserializableSettingsFile);
+                Process.GetCurrentProcess().Kill();
             }
         }
     }
