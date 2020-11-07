@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Deskjets/1.0.0": {
         "dependencies": {
-          "MaterialDesignThemes": "3.1.3"
+          "MaterialDesignThemes": "3.1.3",
+          "Interop.IWshRuntimeLibrary": "1.0.0.0"
         },
         "runtime": {
           "Deskjets.dll": {}
@@ -30,6 +31,14 @@
           "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {
             "assemblyVersion": "3.1.3.1513",
             "fileVersion": "3.1.3.1513"
+          }
+        }
+      },
+      "Interop.IWshRuntimeLibrary/1.0.0.0": {
+        "runtime": {
+          "Interop.IWshRuntimeLibrary.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -54,6 +63,11 @@
       "sha512": "sha512-pyB9HqalbdGmX9iGUIjb82zgtQ5zUCfRqZG/w6AV3+oAI3WMEgzAwzA+NfIlzSPQx4iUz+Xl/O6HcsXoxuuM0g==",
       "path": "materialdesignthemes/3.1.3",
       "hashPath": "materialdesignthemes.3.1.3.nupkg.sha512"
+    },
+    "Interop.IWshRuntimeLibrary/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

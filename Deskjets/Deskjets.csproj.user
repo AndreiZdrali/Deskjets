@@ -16,6 +16,9 @@
     <Compile Update="Windows\TopBarAddWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\YTDownloadWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\BubbleButton.xaml">
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\TopBarAddWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\YTDownloadWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

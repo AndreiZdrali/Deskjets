@@ -1,0 +1,103 @@
+﻿<Window x:Class="Deskjets.Windows.YTDownloadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Deskjets.Windows"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="YTDownloadWindow" Height="150" Width="450"
+        WindowStyle="None" AllowsTransparency="True"
+        BorderThickness="1" BorderBrush="Black"
+        Background="{StaticResource AppCyan}" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <sys:Double x:Key="BigFontSize">25</sys:Double>
+            <sys:Double x:Key="SmallFontSize">18</sys:Double>
+            <sys:Double x:Key="URLFontSize">15</sys:Double>
+
+            <SolidColorBrush x:Key="ButtonBrush" Color="#6000F5FF"/>
+            <SolidColorBrush x:Key="ButtonSelectBrush" Color="#7000FFFF"/>
+            <SolidColorBrush x:Key="ButtonDragBrush" Color="#9000FFFF"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--TITLE BAR-->
+        <Grid x:Name="titleBar" Background="{StaticResource AppPurple}"
+            MouseDown="titleBar_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                <Image Source="{StaticResource AppIcon}"
+                        Margin="5,0,0,0" Height="15"/>
+                <TextBlock Text="{StaticResource AppTitle}"
+                           HorizontalAlignment="Center" Margin="5,0,0,0"
+                           FontSize="16" FontWeight="Light"/>
+            </StackPanel>
+            <TextBlock Grid.Column="1"
+                       Text="{StaticResource YTDownloadWindowTitle}"
+                       HorizontalAlignment="Center"
+                       FontSize="16" FontWeight="Light"/>
+            <StackPanel Grid.Column="2" HorizontalAlignment="Right"
+                        FlowDirection="RightToLeft"
+                        Orientation="Horizontal">
+                <Border x:Name="closeButton" Width="20" Height="20"
+                        Margin="5,0,0,0" CornerRadius="10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right" Background="{StaticResource AppRedNoFocus}">
+                </Border>
+                <Border x:Name="minimizeButton" Width="20" Height="20"
+                        Margin="5,0,0,0" CornerRadius="10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right" Background="{StaticResource AppGreenNoFocus}">
+                </Border>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Margin="5,15,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="URL" VerticalAlignment="Center"
+                           FontSize="{StaticResource SmallFontSize}"
+                           Margin="0,0,15,0"/>
+                <TextBox Style="{StaticResource MaterialDesignTextBox}"
+                         Width="390" x:Name="videoUrlBox"
+                         FontSize="{StaticResource URLFontSize}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Margin="0,0,5,0"
+                            VerticalAlignment="Center">
+                    <RadioButton Style="{StaticResource MaterialDesignRadioButton}"
+                                 GroupName="fileFormat" IsChecked="True"/>
+                    <TextBlock Text="MP3" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5,0,0,0"
+                            VerticalAlignment="Center">
+                    <!--AS PUTEA SA BAG TEXTBLOCK IN CONTENT-->
+                    <RadioButton Style="{StaticResource MaterialDesignRadioButton}"
+                                 GroupName="fileFormat"/>
+                    <TextBlock Text="MP4" VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    Grid.Row="3" Width="100" Height="25"
+                    HorizontalAlignment="Center" x:Name="downloadButton">
+                <TextBlock Text="Download" FontSize="12"/>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

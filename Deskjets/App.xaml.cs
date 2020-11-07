@@ -49,12 +49,16 @@ namespace Deskjets
                     File.Create(Global.UnserializableSettingsFile).Close();
             }
 
+            Global.GeneralSettings.OpenOnStartup = File.Exists(
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Deskjets.lnk"));
             Global.GeneralSettings.TopBarSettings.Background = Utils.StringToBrush(Global.UnserializableSettings.TopBarBackground);
             #endregion
 
             #region DESCHIDE FERESTRELE ACTIVATE
             if (Global.GeneralSettings.TopBarSettings.Enabled)
                 new TopBar().Show();
+
+            Utils.OpenWindow<YTDownloadWindow>(true);
             #endregion
         }
 
@@ -67,7 +71,7 @@ namespace Deskjets
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            //xd
+            MessageBox.Show(e.Exception.Message);
         }
     }
 }

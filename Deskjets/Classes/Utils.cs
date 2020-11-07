@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using IWshRuntimeLibrary;
 
 namespace Deskjets.Classes
 {
@@ -83,6 +84,16 @@ namespace Deskjets.Classes
 
             Color averageColor = Color.FromArgb(r, g, b);
             return "#" + averageColor.R.ToString("X2") + averageColor.G.ToString("X2") + averageColor.B.ToString("X2");
+        }
+
+        public static void CreateShortcut(string targetFile, string destination, string workingDirectory)
+        {
+            WshShellClass wsh = new WshShellClass();
+            IWshShortcut shortcut = (IWshShortcut)wsh.CreateShortcut(destination);
+            shortcut.TargetPath = targetFile;
+            shortcut.Description = "Deskjets desktop customization tool";
+            shortcut.WorkingDirectory = workingDirectory;
+            shortcut.Save();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Deskjets.Classes;
-using Deskjets.Settings;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +9,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.IO;
+using Deskjets.Classes;
+using Deskjets.Settings;
 
 namespace Deskjets.Windows
 {
@@ -37,6 +37,8 @@ namespace Deskjets.Windows
             this.minimizeButton.MouseLeave += (s, e) => this.minimizeButton.Background = Brushes.MediumSeaGreen;
             this.minimizeButton.MouseUp += (s, e) => this.WindowState = WindowState.Minimized;
 
+            this.openOnStartupToggle.Click += openOnStartupToggle_Click;
+
             this.topBarEnabledToggle.Checked += topBarEnabledToggle_Checked;
             this.topBarEnabledToggle.Unchecked += topBarEnabledToggle_Unchecked;
 
@@ -52,7 +54,15 @@ namespace Deskjets.Windows
 
         private void openOnStartupToggle_Click(object sender, RoutedEventArgs e)
         {
-            //sa faca/stearga registru
+            string shortcutPath = Path.Combine(Global.StartupFolder, "Deskjets.lnk");
+            if (File.Exists(shortcutPath) && !Global.GeneralSettings.OpenOnStartup)
+            {
+                File.Delete(shortcutPath);
+            }
+            else if (Global.GeneralSettings.OpenOnStartup)
+            {
+                Utils.CreateShortcut(Global.ExecutablePath, shortcutPath, AppDomain.CurrentDomain.BaseDirectory);
+            }
         }
 
         private void topBarEnabledToggle_Checked(object sender, RoutedEventArgs e)
