@@ -15,7 +15,8 @@
         <ResourceDictionary>
             <sys:Double x:Key="BigFontSize">25</sys:Double>
             <sys:Double x:Key="SmallFontSize">18</sys:Double>
-            <sys:Double x:Key="TextBlockWidth">200</sys:Double>
+            <sys:Double x:Key="TextBlockWidth">190</sys:Double>
+            <sys:Double x:Key="TextBoxWidth">80</sys:Double>
 
             <SolidColorBrush x:Key="ButtonBrush" Color="#6000F5FF"/>
             <SolidColorBrush x:Key="ButtonSelectBrush" Color="#7000FFFF"/>
@@ -154,6 +155,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="General Settings"
                                VerticalAlignment="Center"
@@ -167,6 +169,15 @@
                         <ToggleButton Style="{DynamicResource MaterialDesignSwitchToggleButton}"
                                       IsChecked="{Binding Path=OpenOnStartup, Mode=TwoWay}"
                                       x:Name="openOnStartupToggle"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="YT Download Path" FontWeight="Light"
+                                   VerticalAlignment="Center" Width="{StaticResource TextBlockWidth}"
+                                   FontSize="{StaticResource SmallFontSize}"/>
+                        <TextBox Style="{StaticResource MaterialDesignTextBox}"
+                                 Text="{Binding Path=YTDownloadSettings.Path, Mode=TwoWay}"
+                                 Width="{StaticResource TextBoxWidth}"/>
                     </StackPanel>
                 </Grid>
                 <!--SETARI TOP BAR-->
@@ -196,7 +207,7 @@
                                    FontSize="{StaticResource SmallFontSize}"/>
                         <TextBox Style="{StaticResource MaterialDesignTextBox}"
                                  Text="{Binding Path=TopBarSettings.Background, Mode=TwoWay}"
-                                 Width="70" x:Name="bgColorBox"/>
+                                 Width="{StaticResource TextBoxWidth}" x:Name="bgColorBox"/>
                     </StackPanel>
                 </Grid>
                 <Button Style="{StaticResource MaterialDesignRaisedButton}"

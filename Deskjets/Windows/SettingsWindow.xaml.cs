@@ -100,8 +100,8 @@ namespace Deskjets.Windows
 
         private void resetButton_Click(object sender, RoutedEventArgs e) //SA SCHIMB IN DIALOG BOX CUSTOM
         {
-            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure? This will delete the settings files of" +
-                "the application. May solve issues if using old settings files.", "Delete settings files", MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure? This will delete are reset the settings files of the " +
+                "application. May solve issues if using files from older versions.", "Delete settings files", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 File.Delete(Global.SettingsFile);

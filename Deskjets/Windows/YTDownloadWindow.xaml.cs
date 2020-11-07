@@ -17,7 +17,7 @@ namespace Deskjets.Windows
     /// <summary>
     /// Interaction logic for YTDownloadWindow.xaml
     /// </summary>
-    public partial class YTDownloadWindow : Window
+    public partial class YTDownloadWindow : Window //SA BAG DISABLE LA BUTONUL DE DOWNLOAD IN TIMP CE SE DESCARCA DEJA
     {
         public YTDownloadWindow()
         {
@@ -49,7 +49,6 @@ namespace Deskjets.Windows
         private async void downloadButton_Click(object sender, RoutedEventArgs e)
         {
             downloadButton.IsEnabled = false;
-            downloadButton.Opacity = 0.5;
             try
             {
                 if (mp3RadioButton.IsChecked == true)
@@ -66,7 +65,6 @@ namespace Deskjets.Windows
                 MessageBox.Show(exception.Message); //SA SCHIMB IN FEREATRA DE ERORI CUSTOM
             }
             downloadButton.IsEnabled = true;
-            downloadButton.Opacity = 1;
         }
     }
 }
