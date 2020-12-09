@@ -36,6 +36,8 @@ namespace Deskjets.Classes
             notifyIcon.ContextMenuStrip.Items.Add("Settings", null, (s, e) => Utils.OpenWindow<SettingsWindow>(true));
             notifyIcon.ContextMenuStrip.Items.Add("-");
             notifyIcon.ContextMenuStrip.Items.Add("YT Download", null, (s, e) => Utils.OpenWindow<YTDownloadWindow>(true));
+            notifyIcon.ContextMenuStrip.Items.Add("Encrypt File", null, (s, e) => Utils.OpenWindow<EncryptWindow>(true));
+            notifyIcon.ContextMenuStrip.Items.Add("-");
             notifyIcon.ContextMenuStrip.Items.Add("Add Button TB", null, (s, e) => Utils.OpenWindow<TopBarAddWindow>(true));
             notifyIcon.ContextMenuStrip.Items.Add("-");
             notifyIcon.ContextMenuStrip.Items.Add("Exit", null, (s, e) => Application.Current.Shutdown());

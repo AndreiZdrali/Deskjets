@@ -6,6 +6,7 @@ using System.Linq;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.IO;
+using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using IWshRuntimeLibrary;
@@ -94,6 +95,56 @@ namespace Deskjets.Classes
             shortcut.Description = "Deskjets desktop customization tool";
             shortcut.WorkingDirectory = workingDirectory;
             shortcut.Save();
+        }
+
+        public static string CreateMD5(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString().ToLower();
+            }
+        }
+
+
+        public static void EncryptFile(string inputFile, string outputFile, string password) //sa scot try catch de aici si sa bag in window
+        {
+            try
+            {
+                UnicodeEncoding UE = new UnicodeEncoding();
+                byte[] key = UE.GetBytes(password);
+
+                string cryptFile = outputFile;
+                FileStream fsCrypt = new FileStream(cryptFile, FileMode.Create);
+
+                RijndaelManaged RMCrypto = new RijndaelManaged();
+
+                CryptoStream cs = new CryptoStream(fsCrypt,
+                    RMCrypto.CreateEncryptor(key, key),
+                    CryptoStreamMode.Write);
+
+                FileStream fsIn = new FileStream(inputFile, FileMode.Open);
+
+                int data;
+                while ((data = fsIn.ReadByte()) != -1)
+                    cs.WriteByte((byte)data);
+
+                fsIn.Close();
+                cs.Close();
+                fsCrypt.Close();
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                MessageBox.Show("Encryption failed!", "Error");
+            }
         }
     }
 }

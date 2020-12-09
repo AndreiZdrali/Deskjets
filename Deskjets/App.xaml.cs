@@ -59,7 +59,8 @@ namespace Deskjets
             if (Global.GeneralSettings.TopBarSettings.Enabled)
                 new TopBar().Show();
 
-            Utils.OpenWindow<YTDownloadWindow>(true);
+            //Utils.OpenWindow<YTDownloadWindow>(true);
+            Utils.OpenWindow<EncryptWindow>(true);
             #endregion
         }
 

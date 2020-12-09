@@ -51,7 +51,7 @@ namespace Deskjets.Windows
         {
             if (!Directory.Exists(Global.GeneralSettings.YTDownloadSettings.Path))
             {
-                MessageBox.Show("Invalid path. Change it in the app settings.");
+                MessageBox.Show("Invalid path. Change it in the app settings.", "Error");
                 return;
             }
 
