@@ -113,7 +113,6 @@ namespace Deskjets.Classes
             }
         }
 
-
         public static void EncryptFile(string inputFile, string outputFile, string password) //sa scot try catch de aici si sa bag in window
         {
             try
@@ -143,7 +142,44 @@ namespace Deskjets.Classes
             catch (Exception ex)
             {
                 //throw ex;
-                MessageBox.Show("Encryption failed!", "Error");
+                MessageBox.Show("Encryption failed!\n" + ex.Message, "Error");
+            }
+        }
+
+        public static void DecryptFile(string inputFile, string outputFile, string password)
+        {
+            //le-am scos din try ca sa pot sa le inchid in catch
+            FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
+            FileStream fsOut = new FileStream(outputFile, FileMode.Create);
+
+            try
+            {
+                UnicodeEncoding UE = new UnicodeEncoding();
+                byte[] key = UE.GetBytes(password);
+
+                RijndaelManaged RMCrypto = new RijndaelManaged();
+
+                CryptoStream cs = new CryptoStream(fsCrypt,
+                    RMCrypto.CreateDecryptor(key, key),
+                    CryptoStreamMode.Read);
+
+                int data;
+                while ((data = cs.ReadByte()) != -1)
+                    fsOut.WriteByte((byte)data);
+
+                fsOut.Close();
+                cs.Close();
+                fsCrypt.Close();
+            }
+
+            catch (Exception ex)
+            {
+                //in caz ca cheia e gresit inchide filestream-ul ca sa mai poata fi accesat fisierul
+                fsOut.Close();
+                fsCrypt.Close();
+
+                //throw ex;
+                MessageBox.Show("Decryption failed!\n" + ex.Message, "Error");
             }
         }
     }
