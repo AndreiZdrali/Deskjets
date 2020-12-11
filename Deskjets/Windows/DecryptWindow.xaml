@@ -1,4 +1,4 @@
-﻿<Window x:Class="Deskjets.Windows.EncryptWindow"
+﻿<Window x:Class="Deskjets.Windows.DecryptWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="EncryptWindow" Height="170" Width="450"
+        Title="DecryptWindow" Height="170" Width="450"
         WindowStyle="None" AllowsTransparency="True"
         BorderThickness="1" BorderBrush="Black"
         Background="{StaticResource AppCyan}" Loaded="Window_Loaded">
@@ -44,7 +44,7 @@
                            FontSize="16" FontWeight="Light"/>
             </StackPanel>
             <TextBlock Grid.Column="1"
-                       Text="{StaticResource EncryptWindowTitle}"
+                       Text="{StaticResource DecryptWindowTitle}"
                        HorizontalAlignment="Center"
                        FontSize="16" FontWeight="Light"/>
             <StackPanel Grid.Column="2" HorizontalAlignment="Right"
@@ -88,7 +88,13 @@
                            FontSize="{StaticResource SmallFontSize}"
                            Margin="0,0,15,0"/>
                 <TextBox Style="{StaticResource MaterialDesignTextBox}"
-                         Width="240" x:Name="keyBox"
+                         Width="100" x:Name="keyBox"
+                         FontSize="{StaticResource PathFontSize}"/>
+                <TextBlock Text="Extension" VerticalAlignment="Center"
+                           FontSize="{StaticResource SmallFontSize}"
+                           Margin="15,0,15,0"/>
+                <TextBox Style="{StaticResource MaterialDesignTextBox}"
+                         Width="30" x:Name="extensionBox"
                          FontSize="{StaticResource PathFontSize}"/>
                 <CheckBox Style="{StaticResource MaterialDesignAccentCheckBox}"
                           IsChecked="False" VerticalAlignment="Center"
@@ -98,8 +104,8 @@
             </StackPanel>
             <Button Style="{StaticResource MaterialDesignRaisedButton}"
                     Grid.Row="3" Width="100" Height="25"
-                    HorizontalAlignment="Center" x:Name="encryptButton">
-                <TextBlock Text="Encrypt" FontSize="12"/>
+                    HorizontalAlignment="Center" x:Name="decryptButton">
+                <TextBlock Text="Decrypt" FontSize="12"/>
             </Button>
         </Grid>
     </Grid>

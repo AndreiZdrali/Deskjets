@@ -39,3 +39,5 @@ D:\C#\Deskjets\Deskjets\bin\Debug\netcoreapp3.1\AngleSharp.dll
 D:\C#\Deskjets\Deskjets\bin\Debug\netcoreapp3.1\YoutubeExplode.dll
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\EncryptWindow.g.cs
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\EncryptWindow.baml
+D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\DecryptWindow.g.cs
+D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\DecryptWindow.baml

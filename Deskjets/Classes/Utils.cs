@@ -113,7 +113,7 @@ namespace Deskjets.Classes
             }
         }
 
-        public static void EncryptFile(string inputFile, string outputFile, string password) //sa scot try catch de aici si sa bag in window
+        public static bool EncryptFile(string inputFile, string outputFile, string password) //sa scot try catch de aici si sa bag in window
         {
             try
             {
@@ -138,15 +138,19 @@ namespace Deskjets.Classes
                 fsIn.Close();
                 cs.Close();
                 fsCrypt.Close();
+
+                return true;
             }
             catch (Exception ex)
             {
                 //throw ex;
                 MessageBox.Show("Encryption failed!\n" + ex.Message, "Error");
+
+                return false;
             }
         }
 
-        public static void DecryptFile(string inputFile, string outputFile, string password)
+        public static bool DecryptFile(string inputFile, string outputFile, string password)
         {
             //le-am scos din try ca sa pot sa le inchid in catch
             FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
@@ -170,6 +174,8 @@ namespace Deskjets.Classes
                 fsOut.Close();
                 cs.Close();
                 fsCrypt.Close();
+
+                return true;
             }
 
             catch (Exception ex)
@@ -178,8 +184,14 @@ namespace Deskjets.Classes
                 fsOut.Close();
                 fsCrypt.Close();
 
+                //daca dadea eroare tot ramanea fisierul
+                if (System.IO.File.Exists(outputFile))
+                    System.IO.File.Delete(outputFile);
+
                 //throw ex;
                 MessageBox.Show("Decryption failed!\n" + ex.Message, "Error");
+
+                return false;
             }
         }
     }

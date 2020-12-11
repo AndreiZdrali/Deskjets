@@ -15,13 +15,13 @@ using Deskjets.Classes;
 namespace Deskjets.Windows
 {
     /// <summary>
-    /// Interaction logic for EncryptWindow.xaml
+    /// Interaction logic for DecryptWindow.xaml
     /// </summary>
-    public partial class EncryptWindow : Window
+    public partial class DecryptWindow : Window
     {
-        private bool isEncrypting = false;
+        private bool isDecrypting = false;
 
-        public EncryptWindow()
+        public DecryptWindow()
         {
             InitializeComponent();
         }
@@ -37,7 +37,7 @@ namespace Deskjets.Windows
             this.minimizeButton.MouseUp += (s, e) => this.WindowState = WindowState.Minimized;
 
             this.chooseFileButton.Click += chooseFileButton_Click;
-            this.encryptButton.Click += encryptButton_Click;
+            this.decryptButton.Click += decryptButton_Click;
         }
 
         private void titleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -61,14 +61,15 @@ namespace Deskjets.Windows
             }
         }
 
-        private async void encryptButton_Click(object sender, RoutedEventArgs e)
+        private async void decryptButton_Click(object snder, RoutedEventArgs e)
         {
             string filePath = filePathBox.Text;
             string key = keyBox.Text;
+            string extension = extensionBox.Text;
             bool deleteOriginal = deleteOriginalCheck.IsChecked.HasValue ? deleteOriginalCheck.IsChecked.Value : false;
 
             #region VERIFICARI
-            if (isEncrypting) return;
+            if (isDecrypting) return;
 
             if (!File.Exists(filePath))
             {
@@ -81,9 +82,15 @@ namespace Deskjets.Windows
                 MessageBox.Show("Invalid key!", "Error");
                 return;
             }
+
+            if (String.IsNullOrWhiteSpace(extension))
+            {
+                MessageBox.Show("Invalid extension!", "Error");
+                return;
+            }
             #endregion
 
-            string outputPath = System.IO.Path.ChangeExtension(filePath, ".crypt");
+            string outputPath = System.IO.Path.ChangeExtension(filePath, extension);
             //in caz ca mai e un fisier cu numele ala
             if (File.Exists(outputPath))
             {
@@ -94,16 +101,17 @@ namespace Deskjets.Windows
                 }
             }
 
-            isEncrypting = true;
-            encryptButton.IsEnabled = false;
+            isDecrypting = true;
+            decryptButton.IsEnabled = false;
 
             //cheia sunt primele 8 litere din hash-ul parolei, ca sa aiba 128 biti
             string actualKey = Utils.CreateMD5(key).Substring(0, 8);
-            bool successful = Utils.EncryptFile(filePath, outputPath, actualKey);
+            //daca dadea eroare tot continua functia si stergea fisierul original
+            bool successful = Utils.DecryptFile(filePath, outputPath, actualKey);
             if (!successful)
             {
-                isEncrypting = false;
-                encryptButton.IsEnabled = true;
+                isDecrypting = false;
+                decryptButton.IsEnabled = true;
                 return;
             }
 
@@ -112,9 +120,9 @@ namespace Deskjets.Windows
                 File.Delete(filePath);
             }
 
-            isEncrypting = false;
-            encryptButton.IsEnabled = true;
-            MessageBox.Show("Encryption finished!", "Info");
+            isDecrypting = false;
+            decryptButton.IsEnabled = true;
+            MessageBox.Show("Decryption finished!", "Info");
         }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 D:\C#\Deskjets\Deskjets\App.xaml
-9971814340
+10-53005589
 
-212137700806
+22942170681
 204-1040696056
-Controls\BubbleButton.xaml;Resources\ColorDictionary.xaml;Resources\ImageDictionary.xaml;Resources\StringDictionary.xaml;Windows\EncryptWindow.xaml;Windows\SettingsWindow.xaml;Windows\TopBar.xaml;Windows\TopBarAddWindow.xaml;Windows\YTDownloadWindow.xaml;
+Controls\BubbleButton.xaml;Resources\ColorDictionary.xaml;Resources\ImageDictionary.xaml;Resources\StringDictionary.xaml;Windows\DecryptWindow.xaml;Windows\EncryptWindow.xaml;Windows\SettingsWindow.xaml;Windows\TopBar.xaml;Windows\TopBarAddWindow.xaml;Windows\YTDownloadWindow.xaml;
 
 False
 

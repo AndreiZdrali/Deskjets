@@ -10,6 +10,9 @@
     <Compile Update="Controls\BubbleButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\DecryptWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\EncryptWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\StringDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\DecryptWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\EncryptWindow.xaml">
