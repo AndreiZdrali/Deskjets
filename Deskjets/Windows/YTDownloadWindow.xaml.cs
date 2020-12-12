@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading.Tasks;
 using Deskjets.Classes;
 using Deskjets.Settings;
 
@@ -49,6 +50,9 @@ namespace Deskjets.Windows
 
         private async void downloadButton_Click(object sender, RoutedEventArgs e)
         {
+            //altfel nu merge Task.Run()
+            string videoUrl = videoUrlBox.Text;
+
             if (!Directory.Exists(Global.GeneralSettings.YTDownloadSettings.Path))
             {
                 MessageBox.Show("Invalid path. Change it in the app settings.", "Error");
@@ -60,16 +64,16 @@ namespace Deskjets.Windows
             {
                 if (mp3RadioButton.IsChecked == true)
                 {
-                    YouTube.DownloadAudioAsync(videoUrlBox.Text, Global.GeneralSettings.YTDownloadSettings.Path);
+                    await Task.Run(() => YouTube.DownloadAudioAsync(videoUrl, Global.GeneralSettings.YTDownloadSettings.Path));
                 }
                 else if (mp4RadioButton.IsChecked == true)
                 {
-                    YouTube.DownloadVideoAsync(videoUrlBox.Text, Global.GeneralSettings.YTDownloadSettings.Path);
+                    await Task.Run(() => YouTube.DownloadVideoAsync(videoUrl, Global.GeneralSettings.YTDownloadSettings.Path));
                 }
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message); //SA SCHIMB IN FEREATRA DE ERORI CUSTOM
+                MessageBox.Show(exception.Message, "Error"); //SA SCHIMB IN FEREATRA DE ERORI CUSTOM
             }
             downloadButton.IsEnabled = true;
         }

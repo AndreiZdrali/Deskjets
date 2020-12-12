@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using Deskjets.Classes;
 using Deskjets.Settings;
 using Deskjets.Windows;
-using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics;
 
 namespace Deskjets
 {
@@ -22,6 +22,8 @@ namespace Deskjets
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            //sa verific daca aplicatie este deja deschisa
+
             //nu stiu dc, dar daca nu tin asta aici imi dispare din system tray
             Global.notifyIcon.DoubleClick += (s, e) => { Utils.OpenWindow<SettingsWindow>(true); };
 
@@ -60,8 +62,6 @@ namespace Deskjets
                 new TopBar().Show();
 
             //Utils.OpenWindow<YTDownloadWindow>(true); DE TERMINAT
-            Utils.OpenWindow<EncryptWindow>(true);
-            Utils.OpenWindow<DecryptWindow>(true);
             #endregion
         }
 

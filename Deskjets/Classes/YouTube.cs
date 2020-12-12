@@ -16,6 +16,7 @@ namespace Deskjets.Classes
             YoutubeClient youtube = new YoutubeClient();
 
             Video video = await youtube.Videos.GetAsync(url); //ca sa pot sa iau id-ul de la video fara sa folosesc regex
+
             StreamManifest streamManifest = await youtube.Videos.Streams.GetManifestAsync(video.Id);
             IStreamInfo streamInfo = streamManifest.GetMuxed().WithHighestVideoQuality();
 

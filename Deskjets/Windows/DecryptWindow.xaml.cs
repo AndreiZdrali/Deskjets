@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading.Tasks;
 using System.IO;
 using Deskjets.Classes;
 
@@ -107,7 +108,7 @@ namespace Deskjets.Windows
             //cheia sunt primele 8 litere din hash-ul parolei, ca sa aiba 128 biti
             string actualKey = Utils.CreateMD5(key).Substring(0, 8);
             //daca dadea eroare tot continua functia si stergea fisierul original
-            bool successful = Utils.DecryptFile(filePath, outputPath, actualKey);
+            bool successful = await Task.Run(() => Utils.DecryptFile(filePath, outputPath, actualKey));
             if (!successful)
             {
                 isDecrypting = false;

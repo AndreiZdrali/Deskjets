@@ -9,6 +9,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using System.Threading.Tasks;
 using IWshRuntimeLibrary;
 
 namespace Deskjets.Classes
