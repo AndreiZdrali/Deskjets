@@ -37,6 +37,8 @@ namespace Deskjets.Windows
             this.minimizeButton.MouseLeave += (s, e) => this.minimizeButton.Background = Brushes.MediumSeaGreen;
             this.minimizeButton.MouseUp += (s, e) => this.WindowState = WindowState.Minimized;
 
+            this.filePathBox.PreviewDragOver += filePathBox_PreviewDragOver;
+            this.filePathBox.PreviewDrop += filePathBox_PreviewDrop;
             this.chooseFileButton.Click += chooseFileButton_Click;
             this.encryptButton.Click += encryptButton_Click;
         }
@@ -46,6 +48,20 @@ namespace Deskjets.Windows
             //pt ca daca apas pe un buton misca fereastra in loc sa activeze MouseUp
             if (e.LeftButton == MouseButtonState.Pressed && !this.minimizeButton.IsMouseOver && !this.closeButton.IsMouseOver)
                 this.DragMove();
+        }
+
+        private void filePathBox_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
+            e.Handled = true;
+        }
+
+        private void filePathBox_PreviewDrop(object sender, DragEventArgs e)
+        {
+            string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop);
+            TextBox textBox = (TextBox)sender;
+            if (textBox != null)
+                textBox.Text = filePaths[0];
         }
 
         private void chooseFileButton_Click(object sender, RoutedEventArgs e)

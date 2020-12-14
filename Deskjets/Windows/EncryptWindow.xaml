@@ -75,7 +75,8 @@
                            Margin="0,0,15,0"/>
                 <TextBox Style="{StaticResource MaterialDesignTextBox}"
                          Width="330" x:Name="filePathBox"
-                         FontSize="{StaticResource PathFontSize}"/>
+                         FontSize="{StaticResource PathFontSize}"
+                         AllowDrop="True"/>
                 <Button Style="{StaticResource MaterialDesignFlatButton}"
                         Width="50" Height="30"
                         HorizontalAlignment="Center"
