@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 using Deskjets.Classes;
 using Deskjets.Windows;
 using Microsoft.Win32;
@@ -39,13 +40,13 @@ namespace Deskjets.Windows
             this.minimizeButton.MouseLeave += (s, e) => this.minimizeButton.Background = Brushes.MediumSeaGreen;
             this.minimizeButton.MouseUp += (s, e) => this.WindowState = WindowState.Minimized;
 
+            this.pathsListBox.PreviewDragOver += pathsListBox_PreviewDragOver;
+            this.pathsListBox.PreviewDrop += pathsListBox_PreviewDrop;
 
             this.addButton.Click += addButton_Click;
             this.moveUpButton.Click += moveUpButton_Click;
             this.moveDownButton.Click += moveDownButton_Click;
             this.removeButton.Click += removeButton_Click;
-            #region TEST
-            #endregion
         }
 
         private void titleBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -53,6 +54,36 @@ namespace Deskjets.Windows
             //pt ca daca apas pe un buton misca fereastra in loc sa activeze MouseUp
             if (e.LeftButton == MouseButtonState.Pressed && !this.minimizeButton.IsMouseOver && !this.closeButton.IsMouseOver)
                 this.DragMove();
+        }
+
+        private void pathsListBox_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
+            e.Handled = true;
+        }
+
+        private void pathsListBox_PreviewDrop(object sender, DragEventArgs e)
+        {
+            string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach(string filePath in filePaths)
+            {
+                if (!File.Exists(filePath))
+                {
+                    MessageBox.Show($"File not found: {filePath}");
+                    return;
+                }
+
+                BubbleButtonProperties buttonProperties = new BubbleButtonProperties()
+                {
+                    Color = Utils.GetAverageColor(System.Drawing.Icon.ExtractAssociatedIcon(filePath).ToBitmap()),
+                    HighlightColor = "#FFFFFF",
+                    ExecutablePath = filePath
+                };
+                Global.UnserializableSettings.BubbleButtonPropertiesList.Add(buttonProperties);
+                SaveLoad.SerializeUnserializableSettings();
+
+                TopBar.UpdateTopBar();
+            }
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)

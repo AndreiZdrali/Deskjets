@@ -54,7 +54,7 @@ namespace Deskjets.Windows
             this.DataContext = Global.GeneralSettings.TopBarSettings;
         }
 
-        //ca sa pot sa dau update din alte ferestre fara referinta la fereastra
+        //ca sa pot sa dau update din alte ferestre fara referinta la fereastra 
         public static void UpdateTopBar()
         {
             if (Utils.IsWindowOpen<TopBar>())

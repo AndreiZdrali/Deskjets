@@ -65,7 +65,8 @@
                 <ColumnDefinition Width="1"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Column="0" x:Name="pathsListBox">
+            <ListBox Grid.Column="0" x:Name="pathsListBox"
+                     AllowDrop="True">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="{StaticResource SmallerFontSize}"
