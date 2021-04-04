@@ -62,13 +62,9 @@ namespace Deskjets.Windows
         {
             string shortcutPath = Path.Combine(Global.StartupFolder, "Deskjets.lnk");
             if (File.Exists(shortcutPath) && !Global.GeneralSettings.OpenOnStartup)
-            {
                 File.Delete(shortcutPath);
-            }
             else if (Global.GeneralSettings.OpenOnStartup)
-            {
                 Utils.CreateShortcut(Global.ExecutablePath, shortcutPath, AppDomain.CurrentDomain.BaseDirectory);
-            }
         }
 
         private void ytPathBox_TextChanged(object sender, RoutedEventArgs e) //POT SA FOLOSESC SI LOSTFOCUS

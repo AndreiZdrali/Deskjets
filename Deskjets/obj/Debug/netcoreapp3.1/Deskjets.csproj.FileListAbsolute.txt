@@ -23,8 +23,6 @@ D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Deskjets.pdb
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Deskjets.genruntimeconfig.cache
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\TopBar.g.cs
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\TopBar.baml
-D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\TopBarAddWindow.g.cs
-D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\TopBarAddWindow.baml
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Resources\ColorDictionary.baml
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Resources\StringDictionary.baml
 D:\C#\Deskjets\Deskjets\bin\Debug\netcoreapp3.1\MaterialDesignColors.dll
@@ -41,3 +39,5 @@ D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\EncryptWindow.g.cs
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\EncryptWindow.baml
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\DecryptWindow.g.cs
 D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\DecryptWindow.baml
+D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\ManageTopBarWindow.g.cs
+D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\Windows\ManageTopBarWindow.baml

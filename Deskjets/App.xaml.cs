@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
+using System.Reflection;
 using Deskjets.Classes;
 using Deskjets.Settings;
 using Deskjets.Windows;
-using System.Diagnostics;
 
 namespace Deskjets
 {
@@ -22,7 +23,9 @@ namespace Deskjets
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //sa verific daca aplicatie este deja deschisa
+            //sa verific daca aplicatia este deja deschisa
+            if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location)).Count() > 1)
+                Process.GetCurrentProcess().Kill();
 
             //nu stiu dc, dar daca nu tin asta aici imi dispare din system tray
             Global.notifyIcon.DoubleClick += (s, e) => { Utils.OpenWindow<SettingsWindow>(true); };
@@ -74,7 +77,7 @@ namespace Deskjets
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message);
+            MessageBox.Show(e.Exception.Message + $"\nTry deleting the settings files located at {Global.SettingsFolder}");
         }
     }
 }

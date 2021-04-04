@@ -54,6 +54,25 @@ namespace Deskjets.Windows
             this.DataContext = Global.GeneralSettings.TopBarSettings;
         }
 
+        //ca sa pot sa dau update din alte ferestre fara referinta la fereastra
+        public static void UpdateTopBar()
+        {
+            if (Utils.IsWindowOpen<TopBar>())
+            {
+                StackPanel bubbleStackPanel = Application.Current.Windows.OfType<TopBar>().ToList()[0].bubbleStackPanel;
+                bubbleStackPanel.Children.Clear();
+                foreach (BubbleButtonProperties buttonProperties in Global.UnserializableSettings.BubbleButtonPropertiesList)
+                {
+                    bubbleStackPanel.Children.Add(new BubbleButton()
+                    {
+                        Margin = new Thickness(5, 0, 5, 0),
+                        Color = Utils.StringToBrush(buttonProperties.Color),
+                        HighlightColor = Utils.StringToBrush(buttonProperties.HighlightColor),
+                        ExecutablePath = buttonProperties.ExecutablePath
+                    });
+                }
+            }
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -95,7 +114,6 @@ namespace Deskjets.Windows
                     ExecutablePath = buttonProperties.ExecutablePath
                 });
             }
-
         }
 
         //de facut animatie smechera
@@ -121,34 +139,7 @@ namespace Deskjets.Windows
         
         private void addButton_MouseLeftButtonUp(object sender, MouseEventArgs e)
         {
-            //Utils.OpenWindow<TopBarAddWindow>(true);
-            OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                InitialDirectory = @"D:\",
-                RestoreDirectory = true
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                //salveaza proprietatile unserializable si creeaza butonul
-                BubbleButtonProperties buttonProperties = new BubbleButtonProperties()
-                {
-                    Color = Utils.GetAverageColor(System.Drawing.Icon.ExtractAssociatedIcon(openFileDialog.FileName).ToBitmap()),
-                    HighlightColor = "#FFFFFF",
-                    ExecutablePath = openFileDialog.FileName
-                };
-
-                this.bubbleStackPanel.Children.Add(new BubbleButton()
-                {
-                    Margin = new Thickness(5, 0, 5, 0),
-                    Color = Utils.StringToBrush(buttonProperties.Color),
-                    HighlightColor = Utils.StringToBrush(buttonProperties.HighlightColor),
-                    ExecutablePath = buttonProperties.ExecutablePath
-                });
-
-                Global.UnserializableSettings.BubbleButtonPropertiesList.Add(buttonProperties);
-                SaveLoad.SerializeUnserializableSettings();
-            }
+            Utils.OpenWindow<ManageTopBarWindow>(true);
         }
         #endregion
     }

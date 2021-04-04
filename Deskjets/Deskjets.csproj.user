@@ -19,7 +19,7 @@
     <Compile Update="Windows\SettingsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\TopBarAddWindow.xaml.cs">
+    <Compile Update="Windows\ManageTopBarWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\YTDownloadWindow.xaml.cs">
@@ -51,7 +51,7 @@
     <Page Update="Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\TopBarAddWindow.xaml">
+    <Page Update="Windows\ManageTopBarWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\YTDownloadWindow.xaml">

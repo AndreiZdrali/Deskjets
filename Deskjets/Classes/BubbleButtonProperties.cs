@@ -7,8 +7,8 @@ namespace Deskjets.Classes
     [Serializable]
     class BubbleButtonProperties
     {
-        public string Color;
-        public string HighlightColor;
-        public string ExecutablePath;
+        public string Color { get; set; }
+        public string HighlightColor { get; set; }
+        public string ExecutablePath { get; set; }
     }
 }

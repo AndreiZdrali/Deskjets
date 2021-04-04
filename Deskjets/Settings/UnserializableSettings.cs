@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.IO;
 using Deskjets.Classes;
@@ -11,7 +12,8 @@ namespace Deskjets.Settings
     [Serializable]
     class UnserializableSettings
     {
-        public List<BubbleButtonProperties> BubbleButtonPropertiesList = new List<BubbleButtonProperties>();
+        //era list
+        public ObservableCollection<BubbleButtonProperties> BubbleButtonPropertiesList = new ObservableCollection<BubbleButtonProperties>();
         public string TopBarBackground = "#1AE0FFFF";
     }
 }

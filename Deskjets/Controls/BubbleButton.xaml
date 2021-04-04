@@ -7,9 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="50"
              Loaded="UserControl_Loaded">
-    <!--sa fac bninding pentru culoare-->
+    <!--sa fac binding pentru culoare-->
     <Border x:Name="bubbleBorder" Height="50" Width="50"
-                CornerRadius="25" Background="{Binding Path=Color}">
+            CornerRadius="25" Background="{Binding Path=Color}"
+            Opacity="0.8">
         <Image x:Name="buttonIcon" Height="32" Width="32"/>
     </Border>
 </UserControl>

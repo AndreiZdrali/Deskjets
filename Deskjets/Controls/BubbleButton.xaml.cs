@@ -6,10 +6,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Diagnostics;
+using System.Linq;
+using System.IO;
 using Deskjets.Animations;
 using Deskjets.Classes;
 using Deskjets.Windows;
-using System.Linq;
 
 namespace Deskjets.Controls
 {
@@ -39,9 +40,16 @@ namespace Deskjets.Controls
             this.MouseEnter += BubbleButton_MouseEnter;
             this.MouseLeave += BubbleButton_MouseLeave;
             this.MouseLeftButtonUp += BubbleButton_MouseLeftButtonUp;
-            this.MouseRightButtonDown += BubbleButton_MouseRightButtonDown;
 
-            this.buttonIcon.Source = Utils.BitmapToBitmapSource(System.Drawing.Icon.ExtractAssociatedIcon(this.ExecutablePath).ToBitmap());
+            try
+            {
+                this.buttonIcon.Source = Utils.BitmapToBitmapSource(System.Drawing.Icon.ExtractAssociatedIcon(this.ExecutablePath).ToBitmap());
+                this.ToolTip = Path.GetFileName(ExecutablePath);
+            }
+            catch
+            {
+
+            }
 
             #region calculeaza pasii pt animatii
             double extendCornerRadius = bubbleBorder.Width / 2 * (3.0 / 5);
@@ -81,22 +89,6 @@ namespace Deskjets.Controls
                 FileName = this.ExecutablePath,
                 UseShellExecute = true
             });
-        }
-
-        private void BubbleButton_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //sa fac in add button window o lista cu toate butoanele
-            try
-            {
-                Global.UnserializableSettings.BubbleButtonPropertiesList.Remove(
-                    Global.UnserializableSettings.BubbleButtonPropertiesList.Single(x => x.ExecutablePath == this.ExecutablePath));
-                ((StackPanel)this.Parent).Children.Remove(this);
-                SaveLoad.SerializeUnserializableSettings();
-            }
-            catch
-            {
-                
-            }
         }
     }
 }

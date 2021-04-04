@@ -8,13 +8,13 @@ D:\C#\Deskjets\Deskjets\obj\Debug\netcoreapp3.1\
 Deskjets
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\C#\Deskjets\Deskjets\App.xaml
-10-53005589
+10-475168430
 
-22942170681
-204-1040696056
-Controls\BubbleButton.xaml;Resources\ColorDictionary.xaml;Resources\ImageDictionary.xaml;Resources\StringDictionary.xaml;Windows\DecryptWindow.xaml;Windows\EncryptWindow.xaml;Windows\SettingsWindow.xaml;Windows\TopBar.xaml;Windows\TopBarAddWindow.xaml;Windows\YTDownloadWindow.xaml;
+221457597666
+2041204365917
+Controls\BubbleButton.xaml;Resources\ColorDictionary.xaml;Resources\ImageDictionary.xaml;Resources\StringDictionary.xaml;Windows\DecryptWindow.xaml;Windows\EncryptWindow.xaml;Windows\ManageTopBarWindow.xaml;Windows\SettingsWindow.xaml;Windows\TopBar.xaml;Windows\YTDownloadWindow.xaml;
 
 False
 
