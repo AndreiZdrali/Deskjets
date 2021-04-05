@@ -11,9 +11,10 @@
         Background="Transparent" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
-            <SolidColorBrush x:Key="ButtonBrush" Color="#6000F5FF"/>
-            <SolidColorBrush x:Key="ButtonSelectBrush" Color="#7000FFFF"/>
-            <SolidColorBrush x:Key="ButtonDragBrush" Color="#9000FFFF"/>
+            <!-- #6000F5FF = #7000FFFF = #9000FFFF -->
+            <SolidColorBrush x:Key="ButtonBrush" Color="#3300F5FF"/>
+            <SolidColorBrush x:Key="ButtonSelectBrush" Color="#4000FFFF"/>
+            <SolidColorBrush x:Key="ButtonDragBrush" Color="#4D00FFFF"/>
 
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
@@ -110,8 +111,7 @@
             <ScrollViewer x:Name="bubbleScrollViewer" Grid.Column="1"
                             Width="Auto" Height="Auto"
                             VerticalScrollBarVisibility="Disabled"
-                            HorizontalScrollBarVisibility="Auto"
-                            PreviewMouseWheel="bubbleScrollViewer_PreviewMouseWheel">
+                            HorizontalScrollBarVisibility="Auto">
                 <StackPanel x:Name="bubbleStackPanel"
                             Orientation="Horizontal"/>
             </ScrollViewer>

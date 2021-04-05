@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:Deskjets.Resources"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:String x:Key="AppTitle">Deskjets</sys:String>
-    <sys:String x:Key="ManageTopBarWindowTitle">Manage TopBar</sys:String>
+    <sys:String x:Key="ManageTopBarWindowTitle">Manage Top Bar</sys:String>
     <sys:String x:Key="SettingsWindowTitle">Settings</sys:String>
     <sys:String x:Key="YTDownloadWindowTitle">YouTube Download</sys:String>
     <sys:String x:Key="EncryptWindowTitle">Encrypt File</sys:String>

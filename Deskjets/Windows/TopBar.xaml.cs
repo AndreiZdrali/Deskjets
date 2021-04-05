@@ -46,6 +46,7 @@ namespace Deskjets.Windows
         #endregion
 
         public static bool IsExtended { get; set; } = false;
+        public static bool IsScrolling { get; set; } = false;
 
         public TopBar()
         {
@@ -71,6 +72,7 @@ namespace Deskjets.Windows
                         ExecutablePath = buttonProperties.ExecutablePath
                     });
                 }
+                bubbleStackPanel.Width = (Global.UnserializableSettings.BubbleButtonPropertiesList.Count / 9 + 1) * 540;
             }
         }
 
@@ -87,6 +89,8 @@ namespace Deskjets.Windows
 
             //this.GotFocus += (s, e) => this.SetBottom(this);
             //this.LostFocus += (s, e) => this.SetBottom(this);
+
+            this.bubbleScrollViewer.PreviewMouseWheel += bubbleScrollViewer_PreviewMouseWheel;
 
             this.settingsButton.MouseEnter += (s, e) =>
             {
@@ -114,19 +118,28 @@ namespace Deskjets.Windows
                     ExecutablePath = buttonProperties.ExecutablePath
                 });
             }
+            bubbleStackPanel.Width = (Global.UnserializableSettings.BubbleButtonPropertiesList.Count / 9 + 1) * 540;
         }
 
-        //de facut animatie smechera
-        private void bubbleScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        private async void bubbleScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scrollViewer = (ScrollViewer)sender;
+            if (IsScrolling)
+            {
+                e.Handled = true;
+                return;
+            }
             if (e.Delta < 0)
             {
-                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + 50);
+                IsScrolling = true;
+                await ScrollAnimations.ScrollPixels(sender, 540);
+                IsScrolling = false;
             }
             else
             {
-                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset - 50);
+                IsScrolling = true;
+                await ScrollAnimations.ScrollPixels(sender, -540);
+                IsScrolling = false;
             }
             e.Handled = true;
         }
